@@ -1,0 +1,12 @@
+{
+  "name": "caesar-salad-example",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "system.js": "0.6.7",
+    "es6-module-loader": "0.7.1",
+    "caesar-salad": "^0.1.0"
+  }
+}

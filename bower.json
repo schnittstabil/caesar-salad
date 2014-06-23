@@ -1,0 +1,50 @@
+{
+  "name": "caesar-salad",
+  "description": "Caesar, Vigenere and ROT Cipher.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/schnittstabil/caesar-salad",
+  "keywords": [
+    "Caesar",
+    "Cipher",
+    "Vigenere",
+    "ROT",
+    "ROT13",
+    "ROT18",
+    "ROT47",
+    "ROT5"
+  ],
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "authors": [
+    "Michael Mayer <michael@schnittstabil.de>"
+  ],
+  "dependencies": {
+    "char-buffer": "~0.6.1"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.21.3",
+    "mocha-screencast-reporter": "~0.1.4",
+    "system.js": "0.6.7",
+    "es6-module-loader": "0.7.1"
+  },
+  "main": "lib/caesar-salad.js",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "examples/",
+    "Gruntfile.js",
+    "index.js",
+    "lib/bin",
+    "lib/test",
+    "make.js",
+    "node_modules",
+    "package.json",
+    "resources/",
+    "target/",
+    "temp/",
+    "tests.html"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "caesar-salad-example",
+  "dependencies": {
+    "schnittstabil/caesar-salad": "0.1.0"
+  },
+  "private": true,
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}

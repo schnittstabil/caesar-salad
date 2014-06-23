@@ -1,0 +1,19 @@
+{
+  "name": "caesar-salad",
+  "description": "Caesar, Vigenere and ROT Cipher.",
+  "version": "0.1.0",
+  "url": "https://github.com/schnittstabil/caesar-salad",
+  "logo": "http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52",
+  "options": {
+    "linkNatives": "true",
+    "outdir": "./target/gh-pages/api",
+    "themedir": "resources/yuidoc/theme",
+    "helpers": [
+      "resources/yuidoc/theme/helpers/ext.js"
+    ],
+    "nocode": false,
+    "paths": [
+      "lib"
+    ]
+  }
+}

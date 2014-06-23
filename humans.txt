@@ -1,0 +1,16 @@
+/* humanstxt.org */
+/* the humans responsible & colophon */
+
+
+/* TEAM */
+  Author: Michael Mayer
+  Contact: michael@schnittstabil.de
+  Location: Greater Munich, Germany
+
+
+/* THANKS */
+  Imperator: Gaius Julius Caesar
+
+
+/* TECHNOLOGY COLOPHON */
+  Software: Git, Node.js, Sublime Text
