@@ -1,0 +1,796 @@
+{
+    "project": {
+        "name": "caesar-salad",
+        "description": "Caesar, Vigenere and ROT Cipher.",
+        "version": "0.1.0",
+        "url": "https://github.com/schnittstabil/caesar-salad",
+        "logo": "http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52"
+    },
+    "files": {
+        "lib/caesar-salad.js": {
+            "name": "lib/caesar-salad.js",
+            "modules": {
+                "caesar-salad": 1
+            },
+            "classes": {
+                "CaesarSalad": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/caesar.js": {
+            "name": "lib/caesar.js",
+            "modules": {},
+            "classes": {
+                "Caesar": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/password.js": {
+            "name": "lib/password.js",
+            "modules": {},
+            "classes": {
+                "Password": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/rot13.js": {
+            "name": "lib/rot13.js",
+            "modules": {},
+            "classes": {
+                "ROT13": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/rot18.js": {
+            "name": "lib/rot18.js",
+            "modules": {},
+            "classes": {
+                "ROT18": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/rot47.js": {
+            "name": "lib/rot47.js",
+            "modules": {},
+            "classes": {
+                "ROT47": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/rot5.js": {
+            "name": "lib/rot5.js",
+            "modules": {},
+            "classes": {
+                "ROT5": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/substitution-cipher.js": {
+            "name": "lib/substitution-cipher.js",
+            "modules": {},
+            "classes": {
+                "SubstitutionCipher": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/vigenere.js": {
+            "name": "lib/vigenere.js",
+            "modules": {},
+            "classes": {
+                "Vigenere": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "caesar-salad": {
+            "name": "caesar-salad",
+            "submodules": {},
+            "classes": {
+                "CaesarSalad": 1,
+                "Caesar": 1,
+                "Password": 1,
+                "ROT13": 1,
+                "ROT18": 1,
+                "ROT47": 1,
+                "ROT5": 1,
+                "SubstitutionCipher": 1,
+                "Vigenere": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "lib/vigenere.js",
+            "line": 6,
+            "itemtype": "main"
+        }
+    },
+    "classes": {
+        "CaesarSalad": {
+            "name": "CaesarSalad",
+            "shortname": "CaesarSalad",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/caesar-salad.js",
+            "line": 14,
+            "description": "Caesar-Salad Facade:\n\n    CaesarSalad.Caesar.Cipher('c').crypt('ABCD');   // returns: 'CDEF'\n    CaesarSalad.Caesar.Decipher('c').crypt('CDEF'); // returns: 'ABCD'"
+        },
+        "Caesar": {
+            "name": "Caesar",
+            "shortname": "Caesar",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/caesar.js",
+            "line": 5,
+            "description": "The _Caesar Cipher_ is a monoalphabetic substitution cipher, rotating `A..Z` and `a..z` characters.\n\nExamples using static factory methods:\n\n    Caesar.Cipher('c').crypt('ABCD');   // returns: 'CDEF'\n    Caesar.Decipher('c').crypt('CDEF'); // returns: 'ABCD'\n\nExamples using constructors:\n\n    new Caesar( 2).crypt('ABCD');       // returns: 'CDEF'\n    new Caesar(-2).crypt('CDEF');       // returns: 'ABCD'\n    new Caesar(24).crypt('CDEF');       // returns: 'ABCD'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/Caesar_cipher\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "shift",
+                    "description": "The number to rotate the charCodes `mod 26` and therefore the password of the caesar cipher.",
+                    "type": "Number"
+                }
+            ]
+        },
+        "Password": {
+            "name": "Password",
+            "shortname": "Password",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/password.js",
+            "line": 60,
+            "description": "Handles password parsing for {{#crossLink \"Caesar\"}}{{/crossLink}} and {{#crossLink \"Vigenere\"}}{{/crossLink}}.\n\n`Password` is a {{#ext \"Builder\" \"en.wikipedia.org/wiki/Builder_pattern\"}}{{/ext}} with a {{#ext \"Fluent Interface\" \"en.wikipedia.org/wiki/Fluent_interface\"}}{{/ext}} providing the following methods:\n\n<span style=\"font-family:monospace\">\n  ℒ<sub><span style=\"font-family:cursive\">passwd</span></sub> := {<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).to.shift(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).to.shiftArray(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).forDecryption.to.shift(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).forDecryption.to.shiftArray()<br/>\n  }</span> (for all valid <span style=\"font-family:cursive\">passwd</span>)\n\nValid password formats:\n\n    new Password( 1  ).to.shift() // returns: 1\n    new Password('1' ).to.shift() // returns: 1\n    new Password('-1').to.shift() // returns: -1\n    new Password('b' ).to.shift() // returns: 1\n    new Password('bc').to.shift() // returns: 1\n\n    new Password( 1    ).to.shiftArray() // returns: [1]\n    new Password([1, 2]).to.shiftArray() // returns: [1, 2]\n    new Password('1, 2').to.shiftArray() // returns: [1, 2]\n    new Password('1,-2').to.shiftArray() // returns: [1, -2]\n    new Password('bc'  ).to.shiftArray() // returns: [1, 2]",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "passwd",
+                    "description": "The password to parse.",
+                    "type": "Number|String|[Number]"
+                }
+            ]
+        },
+        "ROT13": {
+            "name": "ROT13",
+            "shortname": "ROT13",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/rot13.js",
+            "line": 4,
+            "description": "The _ROT13 Cipher_ is a monoalphabetic substitution cipher rotating `A..Z` and `a..z` characters.\n\nExamples using static factory methods:\n\n    ROT13.Cipher().crypt('ABCDEFGHIJKLMNOPQRSTUVWXYZ');   // returns: 'NOPQRSTUVWXYZABCDEFGHIJKLM'\n    ROT13.Decipher().crypt('NOPQRSTUVWXYZABCDEFGHIJKLM'); // returns: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'\n\nExamples using constructors:\n\n    new ROT13().crypt('ABCDEFGHIJKLMNOPQRSTUVWXYZ');       // returns: 'NOPQRSTUVWXYZABCDEFGHIJKLM'\n    new ROT13().crypt('NOPQRSTUVWXYZABCDEFGHIJKLM');       // returns: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/ROT13\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1
+        },
+        "ROT18": {
+            "name": "ROT18",
+            "shortname": "ROT18",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/rot18.js",
+            "line": 6,
+            "description": "The _ROT18 Cipher_ is a monoalphabetic substitution cipher combining {{#crossLink \"ROT13\"}}{{/crossLink}} and {{#crossLink \"ROT5\"}}{{/crossLink}}.\n\nExamples using static factory methods:\n\n    ROT18.Cipher().crypt('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');   // returns: 'NOPQRSTUVWXYZABCDEFGHIJKLM5678901234'\n    ROT18.Decipher().crypt('NOPQRSTUVWXYZABCDEFGHIJKLM5678901234'); // returns: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'\n\nExamples using constructors:\n\n    new ROT18().crypt('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');       // returns: 'NOPQRSTUVWXYZABCDEFGHIJKLM5678901234'\n    new ROT18().crypt('NOPQRSTUVWXYZABCDEFGHIJKLM5678901234');       // returns: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/ROT13#Variants\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1
+        },
+        "ROT47": {
+            "name": "ROT47",
+            "shortname": "ROT47",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/rot47.js",
+            "line": 4,
+            "description": "The _ROT47 Cipher_ is a monoalphabetic substitution cipher rotating `!..~` characters.\n\nExamples using static factory methods:\n\n    ROT47.Cipher().crypt('!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~');\n    // returns: 'PQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO'\n\n    ROT47.Decipher().crypt('PQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO');\n    // returns: '!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'\n\nExamples using constructors:\n\n    new ROT47().crypt('!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~');\n    // returns: 'PQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO'\n\n    new ROT47().crypt('PQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO');\n    // returns: '!\"#$%&\\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/ROT13#Variants\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1
+        },
+        "ROT5": {
+            "name": "ROT5",
+            "shortname": "ROT5",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/rot5.js",
+            "line": 4,
+            "description": "The _ROT5 Cipher_ is a monoalphabetic substitution cipher rotating `0..9` characters.\n\nExamples using static factory methods:\n\n    ROT5.Cipher().crypt('0123456789');   // returns: '5678901234'\n    ROT5.Decipher().crypt('5678901234'); // returns: '0123456789'\n\nExamples using constructors:\n\n    new ROT5().crypt('0123456789');       // returns: '5678901234'\n    new ROT5().crypt('5678901234');       // returns: '0123456789'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/ROT13#Variants\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1
+        },
+        "SubstitutionCipher": {
+            "name": "SubstitutionCipher",
+            "shortname": "SubstitutionCipher",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/substitution-cipher.js",
+            "line": 3,
+            "description": "Abstract base class for substitution ciphers (and substitution deciphers).\n\nSubstitution ciphers replace letters of plaintext by other letters. See {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/Substitution_cipher\"}}{{/ext}} for details."
+        },
+        "Vigenere": {
+            "name": "Vigenere",
+            "shortname": "Vigenere",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "caesar-salad",
+            "namespace": "",
+            "file": "lib/vigenere.js",
+            "line": 6,
+            "description": "The _Vigenere Cipher_ is a polylphabetic substitution cipher rotating `A..Z` and `a..z` characters:\n\nExamples using static factory methods:\n\n    Vigenere.Cipher('abc').crypt('ABAB');   // returns: 'ACCB'\n\n    var cipher = Vigenere.Cipher('abc');\n    cipher.crypt('AB');                     // returns: 'AC'\n    cipher.crypt('AB');                     // returns: 'CB'\n\n    Vigenere.Decipher('abc').crypt('ACCB'); // returns 'ABAB'\n\nExamples using constructors:\n\n    new Vigenere([0, 1, 2]).crypt('ABAB');  // returns: 'ACCB'\n    new Vigenere([0,-1,-2]).crypt('ACCB');  // returns: 'ABAB'\n    new Vigenere([0,25,24]).crypt('ACCB');  // returns: 'ABAB'\n\nSee {{#ext \"Wikipedia\" \"en.wikipedia.org/wiki/Vigenere_cipher\"}}{{/ext}} for details.",
+            "extends": "SubstitutionCipher",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "shiftArray",
+                    "description": "The array of numbers used to rotate the charCodes `mod 26` and therefore the password of the Vigenere Cipher.",
+                    "type": "[Number]"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 24,
+            "description": "Names of supported ciphers (and deciphers).",
+            "itemtype": "property",
+            "name": "ciphers",
+            "type": "{Array}",
+            "default": "[ 'Caesar', 'ROT5', 'ROT13', 'ROT18', 'ROT47', 'Vigenere' ]",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 40,
+            "itemtype": "property",
+            "name": "SubstitutionCipher",
+            "type": "SubstitutionCipher",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 46,
+            "itemtype": "property",
+            "name": "Caesar",
+            "type": "Caesar",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 52,
+            "itemtype": "property",
+            "name": "ROT5",
+            "type": "ROT5",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 58,
+            "itemtype": "property",
+            "name": "ROT13",
+            "type": "ROT13",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 64,
+            "itemtype": "property",
+            "name": "ROT18",
+            "type": "ROT18",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 70,
+            "itemtype": "property",
+            "name": "ROT47",
+            "type": "ROT47",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar-salad.js",
+            "line": 76,
+            "itemtype": "property",
+            "name": "Vigenere",
+            "type": "Vigenere",
+            "class": "CaesarSalad",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar.js",
+            "line": 30,
+            "description": "Return the rotated charCode.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_rotate",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to rotate",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "`(charCode + shift) % 26`",
+                "type": "Number"
+            },
+            "class": "Caesar",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar.js",
+            "line": 42,
+            "description": "Substitutes only charCodes of `A..Z` and `a..z` characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "Caesar",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar.js",
+            "line": 65,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "params": [
+                {
+                    "name": "password",
+                    "description": "The password to use, see {{#crossLink \"Password\"}}{{/crossLink}} for valid formats.",
+                    "type": "Number|String"
+                }
+            ],
+            "return": {
+                "description": "The Cipher.",
+                "type": "Caesar"
+            },
+            "class": "Caesar",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/caesar.js",
+            "line": 77,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "params": [
+                {
+                    "name": "password",
+                    "description": "The password to use, see {{#crossLink \"Password\"}}{{/crossLink}} for valid formats.",
+                    "type": "Number|String"
+                }
+            ],
+            "return": {
+                "description": "The Decipher.",
+                "type": "Caesar"
+            },
+            "class": "Caesar",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot13.js",
+            "line": 24,
+            "description": "Substitutes only charCodes of `A..Z` and `a..z` characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "ROT13",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot13.js",
+            "line": 47,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "return": {
+                "description": "The Cipher.",
+                "type": "ROT13"
+            },
+            "class": "ROT13",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot13.js",
+            "line": 58,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "return": {
+                "description": "The Decipher.",
+                "type": "ROT13"
+            },
+            "class": "ROT13",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot18.js",
+            "line": 26,
+            "description": "Substitutes only charCodes of `A..Z`, `a..z` and '0..9' characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "ROT18",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot18.js",
+            "line": 41,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "return": {
+                "description": "The Cipher.",
+                "type": "ROT18"
+            },
+            "class": "ROT18",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot18.js",
+            "line": 52,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "return": {
+                "description": "The Decipher.",
+                "type": "ROT18"
+            },
+            "class": "ROT18",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot47.js",
+            "line": 30,
+            "description": "Substitutes only charCodes of `!..~` characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "ROT47",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot47.js",
+            "line": 53,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "return": {
+                "description": "The Cipher.",
+                "type": "ROT47"
+            },
+            "class": "ROT47",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot47.js",
+            "line": 64,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "return": {
+                "description": "The Decipher.",
+                "type": "ROT47"
+            },
+            "class": "ROT47",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot5.js",
+            "line": 24,
+            "description": "Substitutes only charCodes of `0..9` characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "ROT5",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot5.js",
+            "line": 47,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "return": {
+                "description": "The Cipher.",
+                "type": "ROT5"
+            },
+            "class": "ROT5",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/rot5.js",
+            "line": 58,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "return": {
+                "description": "The Decipher.",
+                "type": "ROT5"
+            },
+            "class": "ROT5",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/substitution-cipher.js",
+            "line": 15,
+            "description": "Abstract method to substitute a single charCode.",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "The charCode to process.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The processed charCode.",
+                "type": "Number"
+            },
+            "class": "SubstitutionCipher",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/substitution-cipher.js",
+            "line": 26,
+            "description": "Template method to encrypt/decrypt strings substituting its input charCode by charCode.",
+            "itemtype": "method",
+            "name": "crypt",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "The string to process.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The processed string.",
+                "type": "Number"
+            },
+            "class": "SubstitutionCipher",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/substitution-cipher.js",
+            "line": 39,
+            "description": "Abstract method to create a cipher instance.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "return": {
+                "description": "The Cipher.",
+                "type": "SubstitutionCipher"
+            },
+            "class": "SubstitutionCipher",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/substitution-cipher.js",
+            "line": 50,
+            "description": "Abstract method to create a decipher instance.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "return": {
+                "description": "The Decipher.",
+                "type": "SubstitutionCipher"
+            },
+            "class": "SubstitutionCipher",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/vigenere.js",
+            "line": 38,
+            "description": "Substitutes only charCodes of `A..Z` and `a..z` characters.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_substituteCharCode",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to substitute.",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The substituted charCode.",
+                "type": "Number"
+            },
+            "class": "Vigenere",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/vigenere.js",
+            "line": 49,
+            "description": "Return the rotated charCode.",
+            "access": "protected",
+            "tagname": "",
+            "itemtype": "method",
+            "name": "_rotate",
+            "params": [
+                {
+                    "name": "charCode",
+                    "description": "the charCode to rotate",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "`(charCode + shift) % 26`",
+                "type": "Number"
+            },
+            "class": "Vigenere",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/vigenere.js",
+            "line": 63,
+            "description": "Static factory method to create cipher instances.",
+            "itemtype": "method",
+            "name": "Cipher",
+            "static": 1,
+            "params": [
+                {
+                    "name": "password",
+                    "description": "The password to use, see {{#crossLink \"Password\"}}{{/crossLink}} for valid formats.",
+                    "type": "[Number]|String"
+                }
+            ],
+            "return": {
+                "description": "The Cipher.",
+                "type": "Vigenere"
+            },
+            "class": "Vigenere",
+            "module": "caesar-salad"
+        },
+        {
+            "file": "lib/vigenere.js",
+            "line": 75,
+            "description": "Static factory method to create decipher instances.",
+            "itemtype": "method",
+            "name": "Decipher",
+            "static": 1,
+            "params": [
+                {
+                    "name": "password",
+                    "description": "The password to use, see {{#crossLink \"Password\"}}{{/crossLink}} for valid formats.",
+                    "type": "[Number]|String"
+                }
+            ],
+            "return": {
+                "description": "The Decipher.",
+                "type": "Vigenere"
+            },
+            "class": "Vigenere",
+            "module": "caesar-salad"
+        }
+    ],
+    "warnings": []
+}
