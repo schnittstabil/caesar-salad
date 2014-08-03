@@ -212,6 +212,9 @@ exports.npm = function npm(done) {
     function copyRescources(cb) {
       cpy(['test/resources/**/*'], 'target/npm/', {cwd: 'lib/'}, cb);
     },
+    function copyBasics(cb) {
+      cpy(['README.md', 'LICENSE'], 'target/npm/', cb);
+    },
   ], done);
 };
 exports.npm.clean = function npmClean(done) {
