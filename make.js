@@ -1,9 +1,12 @@
+#!/bin/sh
+':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 'use strict';
 var chalk = require('chalk'),
     dateformat = require('dateformat'),
     jsonfile = require('jsonfile'),
 
     childProcess = require('child_process'),
+    fs = require('fs'),
     path = require('path'),
 
     async = require('async'),
@@ -16,7 +19,6 @@ var chalk = require('chalk'),
 
     jstransform = require('gulp-es6-module-jstransform'),
     traceur = require('gulp-traceur'),
-
     insert = require('gulp-insert'),
     gulpif = require('gulp-if'),
 
@@ -127,18 +129,38 @@ function transpile(dest, done) {
   ], done);
 }
 
+function mkdirFn(path) {
+  return function mkdir(done) {
+    fs.exists(path, function (exists) {
+      if (exists) {
+        return done();
+      }
+      fs.mkdir(path, done);
+    });
+  };
+}
+
+exports.mkdirTarget = function mkdirTarget(done) {
+  series([
+    mkdirFn('target'),
+    mkdirFn('target/commonjs'),
+    mkdirFn('target/gh-pages'),
+  ], done);
+};
+
 exports.clean = function clean(done) {
   del([
-    'target/npm/*',
-    'target/npm/.*', '!target/npm/.git',
+    'target/commonjs/*',
+    'target/commonjs/.*', '!target/commonjs/.git*',
     'target/gh-pages/*',
-    'target/gh-pages/.*', '!target/gh-pages/.git',
+    'target/gh-pages/.*', '!target/gh-pages/.git*',
   ], done);
 };
 
 exports.coverage = function coverage(done) {
   series([
     'coverage.clean',
+    'mkdirTarget',
     'coverage.transpile',
     'coverage.run',
   ], done);
@@ -182,6 +204,7 @@ exports.coverage.watch = function coverageWatch(done) {
 exports.api = function api(done) {
     series([
     'api.clean',
+    'mkdirTarget',
     'api.run',
   ], done);
 };
@@ -204,30 +227,31 @@ exports.doc = function doc(done) {
   ], done);
 };
 
-exports.npm = function npm(done) {
+exports.commonjs = function commonjs(done) {
   series([
-    'npm.clean',
-    'npm.packageJson',
-    'npm.transpile',
+    'commonjs.clean',
+    'mkdirTarget',
+    'commonjs.packageJson',
+    'commonjs.transpile',
     function copyRescources(cb) {
-      cpy(['test/resources/**/*'], 'target/npm/', {cwd: 'lib/'}, cb);
+      cpy(['test/resources/**/*'], 'target/commonjs/', {cwd: 'lib/'}, cb);
     },
     function copyBasics(cb) {
-      cpy(['README.md', 'LICENSE'], 'target/npm/', cb);
+      cpy(['README.md', 'LICENSE'], 'target/commonjs/', cb);
     },
   ], done);
 };
-exports.npm.clean = function npmClean(done) {
+exports.commonjs.clean = function commonjsClean(done) {
   del([
-    'target/npm/*',
-    'target/npm/.*',
-    '!target/npm/.git',
+    'target/commonjs/*',
+    'target/commonjs/.*',
+    '!target/commonjs/.git*',
   ], done);
 };
-exports.npm.transpile = function npmTranspile(done) {
-  transpile('target/npm', done);
+exports.commonjs.transpile = function commonjsTranspile(done) {
+  transpile('target/commonjs', done);
 };
-exports.npm.packageJson = function npmPackageJson(done) {
+exports.commonjs.packageJson = function commonjsPackageJson(done) {
   async.waterfall([
     function (cb) {
       cb(null, 'package.json');
@@ -245,7 +269,7 @@ exports.npm.packageJson = function npmPackageJson(done) {
       packageJson.bin = {
         'caesar-salad': 'bin/caesar-salad.js',
       };
-      cb(null, 'target/npm/package.json', packageJson);
+      cb(null, 'target/commonjs/package.json', packageJson);
     },
     jsonfile.writeFile
   ], done);
@@ -253,7 +277,7 @@ exports.npm.packageJson = function npmPackageJson(done) {
 
 exports.dist = function dist(done) {
   parallel([
-    'npm',
+    'commonjs',
     'doc',
   ], done);
 };

@@ -56,7 +56,8 @@
     "yuidocjs": "^0.3.50"
   },
   "scripts": {
-    "test": "node make.js coverage && grunt test"
+    "test": "node make.js coverage && grunt test",
+    "dist": "node make.js dist"
   },
   "main": "index.js"
 }
