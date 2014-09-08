@@ -4,10 +4,6 @@ Caesar, Vigenere and ROT Cipher.
 
 ## Command-line interface
 
-```bash
-$ npm install caesar-salad -g
-```
-
 ```
 $ caesar-salad
 
@@ -60,6 +56,21 @@ $ caesar-salad enc --cipher rot5 abcdef-0123456789@example.com
 abcdef-5678901234@example.com
 ```
 
+### Installation using Debian package
+
+See [Ubuntu Launchpad](https://launchpad.net/~schnittstabil/+archive/ubuntu/node-caesar-salad) for details.
+
+```bash
+$ sudo add-apt-repository ppa:schnittstabil/node-caesar-salad
+$ sudo apt-get install node-caesar-salad
+```
+
+### Installation using Node Package Manager (npm)
+
+```bash
+$ npm install caesar-salad -g
+```
+
 ## Documentation
 
 * [API](http://schnittstabil.github.io/caesar-salad/api/#!/api)
@@ -75,10 +86,14 @@ See [examples/bower](https://github.com/schnittstabil/caesar-salad/tree/master/e
 
 See [examples/component](https://github.com/schnittstabil/caesar-salad/tree/master/examples/component).
 
-### NPM
+### Node.js
 
 ```bash
 $ npm install caesar-salad --save
+
+# or:
+$ sudo add-apt-repository ppa:schnittstabil/node-caesar-salad
+$ sudo apt-get install node-caesar-salad
 ```
 
 #### Caesar Cipher

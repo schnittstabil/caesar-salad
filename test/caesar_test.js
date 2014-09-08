@@ -1,9 +1,9 @@
 "use strict";
 var cs = require('../caesar-salad');
-var mod$0 = require('./iterator-utils');
-var charRange = mod$0.charRange;
-var appendIterators = mod$0.appendIterators;
-var toString = mod$0.toString;
+var mod$1 = require('./iterator-utils');
+var charRange = mod$1.charRange;
+var appendIterators = mod$1.appendIterators;
+var toString = mod$1.toString;
 var chai = require('chai');
 var expect = chai.expect;
 describe('Caesar', function() {
