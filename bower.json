@@ -21,11 +21,11 @@
     "Michael Mayer <michael@schnittstabil.de>"
   ],
   "dependencies": {
-    "char-buffer": "~0.6.1"
+    "char-buffer": "~0.7.0"
   },
   "devDependencies": {
     "chai": "~1.9.1",
-    "mocha": "~1.21.3",
+    "mocha": "~1.21.4",
     "mocha-screencast-reporter": "~0.1.4",
     "system.js": "0.6.7",
     "es6-module-loader": "0.7.1"

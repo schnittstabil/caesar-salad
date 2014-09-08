@@ -246,6 +246,7 @@ exports.commonjs.clean = function commonjsClean(done) {
     'target/commonjs/*',
     'target/commonjs/.*',
     '!target/commonjs/.git*',
+    '!target/commonjs/.travis.yml',
   ], done);
 };
 exports.commonjs.transpile = function commonjsTranspile(done) {
