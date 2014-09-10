@@ -1,5 +1,5 @@
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/caesar-salad.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/caesar-salad.js
 FNF:0
 FNH:0
 DA:1,1
@@ -28,7 +28,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/substitution-cipher.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/substitution-cipher.js
 FN:3,SubstitutionCipher
 FN:5,(anonymous_2)
 FN:8,(anonymous_3)
@@ -58,7 +58,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/caesar.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/caesar.js
 FN:4,Caesar
 FN:8,(anonymous_2)
 FN:11,(anonymous_3)
@@ -102,7 +102,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/password.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/password.js
 FN:3,ShiftMixin
 FN:4,(anonymous_2)
 FN:7,(anonymous_3)
@@ -205,7 +205,7 @@ BRF:29
 BRH:29
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/rot5.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/rot5.js
 FN:3,ROT5
 FN:7,(anonymous_2)
 FN:16,(anonymous_3)
@@ -243,7 +243,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/rot13.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/rot13.js
 FN:3,ROT13
 FN:7,(anonymous_2)
 FN:16,(anonymous_3)
@@ -285,7 +285,7 @@ BRF:12
 BRH:12
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/rot18.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/rot18.js
 FN:5,ROT18
 FN:9,(anonymous_2)
 FN:14,(anonymous_3)
@@ -315,7 +315,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/rot47.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/rot47.js
 FN:3,ROT47
 FN:7,(anonymous_2)
 FN:16,(anonymous_3)
@@ -353,7 +353,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:/home/patrick/.local/opt/caesar-salad/temp/coverage/vigenere.js
+SF:/home/patrick/Workspace/projects/caesar-salad/temp/coverage/vigenere.js
 FN:5,Vigenere
 FN:7,(anonymous_2)
 FN:14,(anonymous_3)
