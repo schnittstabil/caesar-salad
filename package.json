@@ -1,6 +1,6 @@
 {
   "name": "caesar-salad",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Caesar, Vigenere and ROT Cipher.",
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/schnittstabil/caesar-salad",
   "dependencies": {
-    "char-buffer": "^0.6.2",
+    "char-buffer": "^0.7.0",
     "commander": "^2.3.0"
   },
   "devDependencies": {
