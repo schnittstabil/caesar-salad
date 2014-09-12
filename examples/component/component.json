@@ -1,7 +1,7 @@
 {
   "name": "caesar-salad-example",
   "dependencies": {
-    "schnittstabil/caesar-salad": "0.1.5"
+    "schnittstabil/caesar-salad": "0.1.6"
   },
   "private": true,
   "license": "MIT",

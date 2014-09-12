@@ -7,6 +7,6 @@
   "dependencies": {
     "system.js": "0.8.2",
     "es6-module-loader": "0.8.2",
-    "caesar-salad": "^0.1.5"
+    "caesar-salad": "0.1.6"
   }
 }

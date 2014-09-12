@@ -277,6 +277,56 @@ exports.commonjs.packageJson = function commonjsPackageJson(done) {
 };
 
 exports.dist = function dist(done) {
+  series([
+    'dist.updateJsons',
+    'dist.build',
+  ], done);
+};
+
+exports.dist.updateJsons = function distUpdateJsons(done) {
+  async.map([
+      'package.json',
+      'bower.json',
+      'component.json',
+      'yuidoc.json',
+      'examples/bower/bower.json',
+      'examples/component/component.json',
+    ],
+    jsonfile.readFile,
+    function (err, files){
+      if (err) {
+        return done(err);
+      }
+
+      files[3].name = files[2].name = files[1].name = files[0].name;
+      files[3].version = files[2].version = files[1].version = files[0].version;
+      files[3].description = files[2].description = files[1].description = files[0].description;
+      files[2].keywords = files[1].keywords = files[0].keywords;
+
+      files[4].dependencies['caesar-salad'] = files[0].version;
+      files[5].dependencies['schnittstabil/caesar-salad'] = files[0].version;
+
+      async.parallel([
+        function(cb){
+          jsonfile.writeFile('bower.json', files[1], cb);
+        },
+        function(cb){
+          jsonfile.writeFile('component.json', files[2], cb);
+        },
+        function(cb){
+          jsonfile.writeFile('yuidoc.json', files[3], cb);
+        },
+        function(cb){
+          jsonfile.writeFile('examples/bower/bower.json', files[4], cb);
+        },
+        function(cb){
+          jsonfile.writeFile('examples/component/component.json', files[5], cb);
+        },
+      ], done);
+    });
+};
+
+exports.dist.build = function distBuild(done) {
   parallel([
     'commonjs',
     'doc',
