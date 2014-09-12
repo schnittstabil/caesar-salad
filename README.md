@@ -61,8 +61,10 @@ abcdef-5678901234@example.com
 See [Ubuntu Launchpad](https://launchpad.net/~schnittstabil/+archive/ubuntu/node-caesar-salad) for details.
 
 ```bash
-$ sudo add-apt-repository ppa:schnittstabil/node-caesar-salad
-$ sudo apt-get install node-caesar-salad
+sudo add-apt-repository -y ppa:schnittstabil/node-caesar-salad
+sudo add-apt-repository -y ppa:schnittstabil/node-char-buffer
+sudo apt-get update
+sudo apt-get install node-caesar-salad
 ```
 
 ### Installation using Node Package Manager (npm)
