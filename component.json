@@ -27,7 +27,7 @@
     "lib/rot13.js"
   ],
   "dependencies": {
-    "schnittstabil/char-buffer": "^0.7.0"
+    "schnittstabil/char-buffer": ">=0.7.0 <0.8.0"
   },
   "main": "lib/caesar-salad.js"
 }

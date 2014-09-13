@@ -1,4 +1,4 @@
-# caesar-salad [![Build Status](https://travis-ci.org/schnittstabil/caesar-salad.svg?branch=master)](https://travis-ci.org/schnittstabil/caesar-salad)
+# caesar-salad [![Dependency Status](https://gemnasium.com/schnittstabil/caesar-salad.svg)](https://gemnasium.com/schnittstabil/caesar-salad) [![Build Status](https://travis-ci.org/schnittstabil/caesar-salad.svg?branch=master)](https://travis-ci.org/schnittstabil/caesar-salad)
 
 Caesar, Vigenere and ROT Cipher.
 

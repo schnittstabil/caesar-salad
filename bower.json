@@ -21,7 +21,7 @@
     "Michael Mayer <michael@schnittstabil.de>"
   ],
   "dependencies": {
-    "char-buffer": "~0.7.0"
+    "char-buffer": ">=0.7.0 <0.8.0"
   },
   "devDependencies": {
     "chai": "~1.9.1",

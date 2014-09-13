@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/schnittstabil/caesar-salad",
   "dependencies": {
-    "char-buffer": "^0.7.0",
+    "char-buffer": ">=0.7.0 <0.8.0",
     "commander": "^2.3.0"
   },
   "devDependencies": {
