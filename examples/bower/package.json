@@ -1,0 +1,12 @@
+{
+  "name": "bower-caesar-salad-example",
+  "version": "0.0.0",
+  "main": "index.html",
+  "private": true,
+  "scripts": {
+    "test": "node_modules/.bin/serve"
+  },
+  "devDependencies": {
+    "serve": "^1.4.0"
+  }
+}
