@@ -1,7 +1,7 @@
 {
     "project": {
         "name": "caesar-salad",
-        "description": "Caesar, Vigenere and ROT Cipher.",
+        "description": "Caesar, Vigenere and ROT Ciphers.",
         "version": "0.1.6",
         "url": "https://github.com/schnittstabil/caesar-salad",
         "logo": "http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52"
