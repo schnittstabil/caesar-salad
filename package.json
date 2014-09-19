@@ -2,7 +2,7 @@
   "name": "caesar-salad",
   "version": "0.1.6",
   "private": true,
-  "description": "Caesar, Vigenere and ROT Cipher.",
+  "description": "Caesar, Vigenere and ROT Ciphers.",
   "repository": {
     "type": "git",
     "url": "https://github.com/schnittstabil/caesar-salad.git"

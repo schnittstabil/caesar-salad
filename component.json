@@ -1,7 +1,7 @@
 {
   "name": "caesar-salad",
   "version": "0.1.6",
-  "description": "Caesar, Vigenere and ROT Cipher.",
+  "description": "Caesar, Vigenere and ROT Ciphers.",
   "repo": "schnittstabil/caesar-salad",
   "keywords": [
     "Caesar",
