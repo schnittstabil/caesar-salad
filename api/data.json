@@ -2,7 +2,7 @@
     "project": {
         "name": "caesar-salad",
         "description": "Caesar, Vigenere and ROT Ciphers.",
-        "version": "0.1.6",
+        "version": "0.1.7",
         "url": "https://github.com/schnittstabil/caesar-salad",
         "logo": "http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52"
     },
@@ -163,7 +163,7 @@
             "module": "caesar-salad",
             "namespace": "",
             "file": "lib/password.js",
-            "line": 60,
+            "line": 71,
             "description": "Handles password parsing for {{#crossLink \"Caesar\"}}{{/crossLink}} and {{#crossLink \"Vigenere\"}}{{/crossLink}}.\n\n`Password` is a {{#ext \"Builder\" \"en.wikipedia.org/wiki/Builder_pattern\"}}{{/ext}} with a {{#ext \"Fluent Interface\" \"en.wikipedia.org/wiki/Fluent_interface\"}}{{/ext}} providing the following methods:\n\n<span style=\"font-family:monospace\">\n  ℒ<sub><span style=\"font-family:cursive\">passwd</span></sub> := {<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).to.shift(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).to.shiftArray(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).forDecryption.to.shift(),<br/>\n  &nbsp;&nbsp;new Password(<span style=\"font-family:cursive\">passwd</span>).forDecryption.to.shiftArray()<br/>\n  }</span> (for all valid <span style=\"font-family:cursive\">passwd</span>)\n\nValid password formats:\n\n    new Password( 1  ).to.shift() // returns: 1\n    new Password('1' ).to.shift() // returns: 1\n    new Password('-1').to.shift() // returns: -1\n    new Password('b' ).to.shift() // returns: 1\n    new Password('bc').to.shift() // returns: 1\n\n    new Password( 1    ).to.shiftArray() // returns: [1]\n    new Password([1, 2]).to.shiftArray() // returns: [1, 2]\n    new Password('1, 2').to.shiftArray() // returns: [1, 2]\n    new Password('1,-2').to.shiftArray() // returns: [1, -2]\n    new Password('bc'  ).to.shiftArray() // returns: [1, 2]",
             "is_constructor": 1,
             "params": [
@@ -353,7 +353,7 @@
         },
         {
             "file": "lib/caesar.js",
-            "line": 30,
+            "line": 32,
             "description": "Return the rotated charCode.",
             "access": "protected",
             "tagname": "",
@@ -375,7 +375,7 @@
         },
         {
             "file": "lib/caesar.js",
-            "line": 42,
+            "line": 44,
             "description": "Substitutes only charCodes of `A..Z` and `a..z` characters.",
             "access": "protected",
             "tagname": "",
@@ -397,7 +397,7 @@
         },
         {
             "file": "lib/caesar.js",
-            "line": 65,
+            "line": 67,
             "description": "Static factory method to create cipher instances.",
             "itemtype": "method",
             "name": "Cipher",
@@ -418,7 +418,7 @@
         },
         {
             "file": "lib/caesar.js",
-            "line": 77,
+            "line": 79,
             "description": "Static factory method to create decipher instances.",
             "itemtype": "method",
             "name": "Decipher",
@@ -511,7 +511,7 @@
         },
         {
             "file": "lib/rot18.js",
-            "line": 41,
+            "line": 42,
             "description": "Static factory method to create cipher instances.",
             "itemtype": "method",
             "name": "Cipher",
@@ -525,7 +525,7 @@
         },
         {
             "file": "lib/rot18.js",
-            "line": 52,
+            "line": 53,
             "description": "Static factory method to create decipher instances.",
             "itemtype": "method",
             "name": "Decipher",
@@ -707,7 +707,7 @@
         },
         {
             "file": "lib/vigenere.js",
-            "line": 38,
+            "line": 41,
             "description": "Substitutes only charCodes of `A..Z` and `a..z` characters.",
             "access": "protected",
             "tagname": "",
@@ -729,7 +729,7 @@
         },
         {
             "file": "lib/vigenere.js",
-            "line": 49,
+            "line": 52,
             "description": "Return the rotated charCode.",
             "access": "protected",
             "tagname": "",
@@ -751,7 +751,7 @@
         },
         {
             "file": "lib/vigenere.js",
-            "line": 63,
+            "line": 67,
             "description": "Static factory method to create cipher instances.",
             "itemtype": "method",
             "name": "Cipher",
@@ -772,7 +772,7 @@
         },
         {
             "file": "lib/vigenere.js",
-            "line": 75,
+            "line": 79,
             "description": "Static factory method to create decipher instances.",
             "itemtype": "method",
             "name": "Decipher",
