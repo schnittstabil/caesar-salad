@@ -54,10 +54,10 @@ program.cryptAction = function(Cipher, text) {
   cipherStream.pipe(output);
 };
 program.encryptAction = function(text) {
-  this.cryptAction(this.Cipher.Cipher, text);
+  program.cryptAction(program.Cipher.Cipher, text);
 };
 program.decryptAction = function(text) {
-  this.cryptAction(this.Cipher.Decipher, text);
+  program.cryptAction(program.Cipher.Decipher, text);
 };
 program.listAction = function() {
   caesarSalad.ciphers.forEach(function(name) {
@@ -102,8 +102,8 @@ if (require && require.main === module) {
   } catch (err) {
     if (program.rawArgs.indexOf('-d') > -1 || program.rawArgs.indexOf('--debug') > -1) {
       throw err;
-    } else {
-      console.error(err.toString());
     }
+    console.error(err.toString());
+    process.exit(1);
   }
 }

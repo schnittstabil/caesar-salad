@@ -21,21 +21,26 @@ function ShiftMixin() {
   };
 }
 function passwordToShiftArray(passwd) {
+  var shiftArrayRegExp = /^[-+]?[0-9]+(,[-+]?[0-9]+)*$/,
+      shiftStringRegExp = /^[A-Za-z]*$/;
   if (typeof passwd === 'undefined' || passwd === null) {
     return [0];
-  } else if (Number.isInteger(passwd)) {
+  }
+  if (Number.isInteger(passwd)) {
     return [passwd];
-  } else if (typeof passwd === 'string' && /^[-+]?[0-9]+(,[-+]?[0-9]+)*$/.test(passwd)) {
+  }
+  if (typeof passwd === 'string' && shiftArrayRegExp.test(passwd)) {
     return passwd.split(',').map(Number);
-  } else if (typeof passwd === 'string' && /^[A-Za-z]*$/.test(passwd)) {
+  }
+  if (typeof passwd === 'string' && shiftStringRegExp.test(passwd)) {
     return passwd.toLowerCase().split('').map(function(c) {
       return c.charCodeAt(0) - 97;
     });
-  } else if (passwd && passwd.every && passwd.every(Number.isInteger)) {
-    return passwd.slice();
-  } else {
-    throw new RangeError('Unable to parse password: ' + passwd);
   }
+  if (passwd && passwd.every && passwd.every(Number.isInteger)) {
+    return passwd.slice();
+  }
+  throw new RangeError('Unable to parse password: ' + passwd);
 }
 var dfa = {
   'password': ['to', 'forDecryption'],
@@ -43,34 +48,35 @@ var dfa = {
   'forDecryption': ['to']
 };
 var mixins = {'to': [ShiftMixin]};
-var Password = function Password(passwd, symbol, parent) {
-  if (!symbol) {
-    symbol = 'password';
-  }
-  var children = dfa[symbol],
-      i,
-      len;
-  if (parent instanceof $Password) {
-    this.symbols = parent.symbols.slice();
-    this.getPassword = parent.getPassword;
-  } else {
-    this.symbols = [];
-    passwd = passwordToShiftArray(passwd);
-    this.getPassword = function() {
-      return passwd;
-    };
-  }
-  this.symbols.push(symbol);
-  if (mixins[symbol]) {
-    for (i = 0, len = mixins[symbol].length; i < len; i++) {
-      mixins[symbol][i].call(this);
+var Password = (function() {
+  function Password(passwd, symbol, parent) {
+    if (!symbol) {
+      symbol = 'password';
+    }
+    var children = dfa[symbol],
+        i,
+        len;
+    if (parent instanceof Password) {
+      this.symbols = parent.symbols.slice();
+      this.getPassword = parent.getPassword;
+    } else {
+      this.symbols = [];
+      passwd = passwordToShiftArray(passwd);
+      this.getPassword = function() {
+        return passwd;
+      };
+    }
+    this.symbols.push(symbol);
+    if (mixins[symbol]) {
+      for (i = 0, len = mixins[symbol].length; i < len; i++) {
+        mixins[symbol][i].call(this);
+      }
+    }
+    for (i = 0; i < children.length; i++) {
+      this[children[i]] = new Password(null, children[i], this);
     }
   }
-  for (i = 0; i < children.length; i++) {
-    this[children[i]] = new $Password(null, children[i], this);
-  }
-};
-var $Password = Password;
-($traceurRuntime.createClass)(Password, {}, {});
+  return ($traceurRuntime.createClass)(Password, {}, {});
+}());
 Password['default'] = Password;
 module.exports = Password;

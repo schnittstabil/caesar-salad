@@ -7,17 +7,26 @@ var chai = require('chai');
 var expect = chai.expect;
 function execCli(cmd, cipher, password, input, done) {
   var temp = path.join(__dirname, 'resources/temp.dat'),
-      args = [process.argv[0], path.join(__dirname, '../bin/caesar-salad.js'), cmd, '--cipher', cipher, '-i', path.join(__dirname, input), '-o', temp];
+      args = [process.argv[0], path.join(__dirname, '../bin/caesar-salad.js'), cmd, '-d', '--cipher', cipher, '-i', path.join(__dirname, input), '-o', temp];
   if (password) {
     args.push('--password');
     args.push(password);
   }
   childProcess.exec(args.join(' '), function(error, stdout, stderr) {
     if (error) {
-      throw error;
+      done(error);
+      return ;
     }
-    fs.readFile(temp, function(erro, data) {
-      done(erro, data);
+    if (stderr) {
+      done(new Error(stderr));
+      return ;
+    }
+    fs.readFile(temp, function(err, data) {
+      if (err && err.code === 'ENOENT') {
+        done(new Error('`' + args.join(' ') + '` does not create `' + temp + '`'));
+        return ;
+      }
+      done(err, data);
     });
   });
 }
