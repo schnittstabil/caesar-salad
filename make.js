@@ -12,7 +12,7 @@ var chalk = require('chalk'),
     async = require('async'),
     once = require('once'),
 
-    vinyl = require('vinyl-fs'),
+    vinylFs = require('vinyl-fs'),
     del = require('del'),
     cpy = require('cpy'),
     cpFile = require('cp-file'),
@@ -85,7 +85,7 @@ function parallel(taskNames, done) {
 }
 
 function watch(glob, taskNames, done) {
-  vinyl.watch(glob, {dot: true}, function() {
+  vinylFs.watch(glob, {dot: true}, function() {
     series(taskNames, function() {});
   });
 };
@@ -109,7 +109,7 @@ function transpile(dest, done) {
   parallel([
     function transpileSrcs(cb) {
       pipe([
-        vinyl.src(['lib/**/*.js'], {base: 'lib'}),
+        vinylFs.src(['lib/**/*.js'], {base: 'lib'}),
         jstransform(),
         traceur(),
         gulpif(
@@ -120,7 +120,7 @@ function transpile(dest, done) {
           /lib\/bin\/caesar-salad.js$/,
           insert.prepend(shebang + 'require(\'../traceur-runtime\');\n')
         ),
-        vinyl.dest(dest)
+        vinylFs.dest(dest)
       ], cb);
     },
     function copyRuntime(cb) {
@@ -177,17 +177,23 @@ exports.coverage.transpile = function coverageTranspile(done) {
 exports.coverage.run = function coverageRun(done) {
   series([
     function copyRescources(cb) {
-      cpy(['test/resources/**/*'], 'temp/coverage', {cwd: 'lib/'}, cb);
+      cpy(['test/resources/**/*'], '../temp/coverage', {
+        cwd: 'lib/',
+        parents: true,
+      }, cb);
     },
     function instrument(cb) {
       pipe([
-        vinyl.src(['*.js', '!traceur-runtime.js', '!polyfills.js'], {cwd: 'temp/coverage'}),
+        vinylFs.src(['*.js', '!traceur-runtime.js', '!polyfills.js'], {
+          cwd: 'temp/coverage'
+        }),
         istanbul(),
+        istanbul.hookRequire(),
       ], cb);
     },
     function test(cb) {
       pipe([
-        vinyl.src('test/**/*_test.js', {cwd: 'temp/coverage'}),
+        vinylFs.src('test/**/*_test.js', {cwd: 'temp/coverage'}),
         mocha({reporter: 'dot'}),
         istanbul.writeReports({
           dir: 'target/gh-pages/coverage',
@@ -234,7 +240,7 @@ exports.commonjs = function commonjs(done) {
     'commonjs.packageJson',
     'commonjs.transpile',
     function copyRescources(cb) {
-      cpy(['test/resources/**/*'], 'target/commonjs/', {cwd: 'lib/'}, cb);
+      cpy(['test/resources/**/*'], '../target/commonjs/', {cwd: 'lib/', parents: true}, cb);
     },
     function copyBasics(cb) {
       cpy(['README.md', 'LICENSE'], 'target/commonjs/', cb);
