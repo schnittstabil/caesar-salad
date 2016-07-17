@@ -18,5 +18,5 @@ npm install
 # run simple webserver
 npm test
 
-# open http://localhost:3000
+# open http://localhost:8080
 ```

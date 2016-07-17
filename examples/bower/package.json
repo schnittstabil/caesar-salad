@@ -4,9 +4,9 @@
   "main": "index.html",
   "private": true,
   "scripts": {
-    "test": "node_modules/.bin/serve"
+    "test": "http-server"
   },
   "devDependencies": {
-    "serve": "^1.4.0"
+    "http-server": "^0.9.0"
   }
 }

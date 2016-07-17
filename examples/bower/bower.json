@@ -5,8 +5,9 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "system.js": ">=0.16.7 <0.17.0",
-    "caesar-salad": "0.1.7"
+    "system.js": "0.19.31",
+    "caesar-salad": "0.1.7",
+    "traceur": "^0.0.111"
   },
   "devDependencies": {}
 }

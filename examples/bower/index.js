@@ -1,6 +1,11 @@
 window.onload = function() {
-  System.map['char-buffer'] = 'bower_components/char-buffer/char-buffer';
-  System.paths['caesar-salad/*'] = '/bower_components/caesar-salad/lib/*.js';
+  SystemJS.config({
+    baseURL: '/bower_components',
+  });
+
+  System.defaultJSExtensions = true;
+  System.map['char-buffer'] = 'char-buffer/char-buffer';
+  System.paths['caesar-salad/*'] = 'caesar-salad/lib/*.js';
 
   System
     .import('caesar-salad/caesar-salad')
