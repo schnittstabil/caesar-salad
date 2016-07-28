@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Caesar-Salad jspm example</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/css/tether.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+	<style>
+		.container {
+			max-width: 40rem;
+		}
+	</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ceasar-Salad</h1>
+    <form id="inputForm">
+      <fieldset class="form-group">
+        <label for="cipher">Cipher</label>
+        <select class="form-control" id="cipher">
+        </select>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="key">Key</label>
+        <input type="text" class="form-control" id="key" value="b"/>
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="input">Input</label>
+        <input type="text" class="form-control" id="input" value="abc123"/>
+      </fieldset>
+      <div class="radio">
+        <label>
+          <input type="radio" name="type" value="Cipher" checked/> encrypt
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="type" value="Decipher"/> decrypt
+        </label>
+      </div>
+    </form>
+    <hr/>
+    <form id="outputForm">
+      <fieldset class="form-group" disabled>
+        <label for="output">Output</label>
+        <input type="text" class="form-control" id="output" value="Loading…"/>
+      </fieldset>
+    </form>
+  </div>
+
+	<!-- jQuery first, then Bootstrap JS. -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.2/js/tether.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+	<script src="build.js"></script>
+</body>
+</html>

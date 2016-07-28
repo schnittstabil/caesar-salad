@@ -169,8 +169,9 @@
             <div class="returns-description">
                 {{#if description}}
                     {{#if type}}
-                        <span class="type">{{#crossLink type}}{{/crossLink}}</span>: {{{description}}}
+                        <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
                     {{/if}}
+                    {{{description}}}
                 {{else}}
                     {{#if type}}
                         <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
@@ -179,6 +180,25 @@
             </div>
         </div>
     {{/return}}
+
+    {{#throws}}
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                {{#if description}}
+                    {{#if type}}
+                        <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
+                    {{/if}}
+                    {{{description}}}
+                {{else}}
+                    {{#if type}}
+                        <span class="type">{{#crossLink type}}{{/crossLink}}</span>:
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    {{/throws}}
 
     {{#example}}
         <div class="example">

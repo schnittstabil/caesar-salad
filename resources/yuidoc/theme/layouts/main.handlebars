@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{yuiGridsUrl}}">
     <link rel="stylesheet" href="{{projectAssets}}/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="{{projectAssets}}/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
+    <link rel="shortcut icon" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
     <script src="{{yuiSeedUrl}}"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -17,7 +17,7 @@
             {{#if projectLogo}}
                 <h1><img src="{{projectLogo}}" title="{{projectName}}">{{projectName}}</h1>
             {{else}}
-                <h1><img src="{{projectAssets}}/css/logo.png" title="{{projectName}}">{{projectName}}</h1>
+                <h1><img src="{{projectAssets}}/css/logo.png" title="{{projectName}}" width="117" height="52">{{projectName}}</h1>
             {{/if}}
         </div>
         <div class="yui3-u-1-4 version">
@@ -36,7 +36,7 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        {{>layout_content}}
+{{>layout_content}}
                     </div>
                 </div>
             </div>

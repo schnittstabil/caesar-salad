@@ -1,11 +1,18 @@
+sudo: false
 language: node_js
-before_script:
-- npm install -g grunt-cli
-- npm install -g bower
-- bower install
-node_js:
-- "0.10"
 env:
   global:
   - secure: Hlhjp3rFCE/WNC+kpAt44CzoSHikyR+N0Hfm1h75rJ7NRE+9bT99RilgWs7bfLmM/i/87pzPdo7LOhTaZ/FS6chhBUSyjY+ADiJHyPfsrZRJcU7HDOqWn9Eovy1MGsFR+frS53v+UDZOyTZfbjuH2z6SCTvWFD+dN1aMtU9Vgp0=
   - secure: jLORWB9y53r0yv312o8NUtHeQo/vwjY1/BvvASuj/sYpYO8fg3KiiE/bwi0WkuxVIZ/rt+9d0e173dl/DMeKqGKUc40alncrcYP7TOclZxQZgFN/Mej6QD6z1ttOo1ntKWgDbvLP1VAhpY7SmWhtcIr8Ql5KKWyt6daN1oTKs4I=
+matrix:
+  include:
+    - node_js: "4"
+    - node_js: "5"
+    - node_js: "6"
+      env: COVER=yes
+before_install:
+  - 'npm install -g npm@latest'
+script:
+  - 'if [ -n "$COVER" ]; then npm run test-cover; else npm test; fi'
+after_success:
+  - 'if [ -n "$COVER" ]; then node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls; fi'
