@@ -37,6 +37,10 @@ a {
     text-decoration: none;
 }
 
+a.external:after {
+    content: url(../img/external-small.png);
+}
+
 .hidden {
     display: none;
 }
@@ -781,6 +785,3 @@ kbd .cmd { font-family: Monaco, Helvetica; }
     font-weight: bold;
 }
 
-a.external:after {
-    content: url(../img/external-small.png);
-}

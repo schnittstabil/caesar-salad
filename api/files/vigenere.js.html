@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>caesar-salad - caesar-salad</title>
+    <title>vigenere.js - caesar-salad</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -85,78 +85,102 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-<h1>caesar-salad Module</h1>
-<div class="box clearfix meta">
+<h1 class="file-heading">File: vigenere.js</h1>
 
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
 
-        <div class="foundat">
-            Defined in: <a href="../files/vigenere.js.html#l8"><code>vigenere.js:8</code></a>
-        </div>
+const SubstitutionCipher = require(&#x27;./substitution-cipher&#x27;);
+const Caesar = require(&#x27;./caesar&#x27;);
+const Password = require(&#x27;./password&#x27;);
 
-</div>
+class Vigenere extends SubstitutionCipher {
+	/**
+	 * The _Vigenere Cipher_ is a polylphabetic substitution cipher rotating &#x60;A..Z&#x60; and &#x60;a..z&#x60; characters:
+	 *
+	 * Examples using static factory methods:
+	 *
+	 *     Vigenere.Cipher(&#x27;abc&#x27;).crypt(&#x27;ABAB&#x27;);   // returns: &#x27;ACCB&#x27;
+	 *
+	 *     var cipher = Vigenere.Cipher(&#x27;abc&#x27;);
+	 *     cipher.crypt(&#x27;AB&#x27;);                     // returns: &#x27;AC&#x27;
+	 *     cipher.crypt(&#x27;AB&#x27;);                     // returns: &#x27;CB&#x27;
+	 *
+	 *     Vigenere.Decipher(&#x27;abc&#x27;).crypt(&#x27;ACCB&#x27;); // returns &#x27;ABAB&#x27;
+	 *
+	 * Examples using constructors:
+	 *
+	 *     new Vigenere([0, 1, 2]).crypt(&#x27;ABAB&#x27;);  // returns: &#x27;ACCB&#x27;
+	 *     new Vigenere([0,-1,-2]).crypt(&#x27;ACCB&#x27;);  // returns: &#x27;ABAB&#x27;
+	 *     new Vigenere([0,25,24]).crypt(&#x27;ACCB&#x27;);  // returns: &#x27;ABAB&#x27;
+	 *
+	 * See &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/Vigenere_cipher&quot;&gt;Wikipedia&lt;/a&gt; for details.
+	 *
+	 * @class Vigenere
+	 * @extends SubstitutionCipher
+	 * @constructor
+	 * @param shiftArray {[Number]} The array of numbers used to rotate the charCodes &#x60;mod 26&#x60; and therefore the password of the Vigenere Cipher.
+	 */
+	constructor(shiftArray) {
+		super();
 
+		this._shiftArray = shiftArray.map(shift =&gt; ((shift % 26) + 26) % 26);
+		this._shiftIndex = -1;
 
-<div class="box intro">
-    
-</div>
+		/**
+		 * Substitutes only charCodes of &#x60;A..Z&#x60; and &#x60;a..z&#x60; characters.
+		 *
+		 * @protected
+		 * @method _substituteCharCode
+		 * @param charCode {Number} the charCode to substitute.
+		 * @return {Number} The substituted charCode.
+		 */
+		this._substituteCharCode = Caesar.prototype._substituteCharCode;
+	}
 
+	/**
+	 * Return the rotated charCode.
+	 *
+	 * @protected
+	 * @method _rotate
+	 * @param charCode {Number} the charCode to rotate
+	 * @return {Number} &#x60;(charCode + shift) % 26&#x60;
+	 */
+	_rotate(charCode) {
+		this._shiftIndex = (this._shiftIndex + 1) % this._shiftArray.length;
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-            <p>This module provides the following classes:</p>
+		return (charCode + this._shiftArray[this._shiftIndex]) % 26;
+	}
+}
 
-            <ul class="module-classes">
-                <li class="module-class">
-                    <a href="../classes/Caesar.html">
-                        Caesar
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/CaesarSalad.html">
-                        CaesarSalad
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/Password.html">
-                        Password
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/ROT13.html">
-                        ROT13
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/ROT18.html">
-                        ROT18
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/ROT47.html">
-                        ROT47
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/ROT5.html">
-                        ROT5
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/SubstitutionCipher.html">
-                        SubstitutionCipher
-                    </a>
-                </li>
-                <li class="module-class">
-                    <a href="../classes/Vigenere.html">
-                        Vigenere
-                    </a>
-                </li>
-            </ul>
-    </div>
+/**
+ * Static factory method to create cipher instances.
+ *
+ * @method Cipher
+ * @static
+ * @param password {[Number]|String} The password to use, see {{#crossLink &quot;Password&quot;}}{{/crossLink}} for valid formats.
+ * @return {Vigenere} The Cipher.
+ */
+Vigenere.Cipher = function (password) {
+	return new Vigenere(new Password(password).to.shiftArray());
+};
 
+/**
+ * Static factory method to create decipher instances.
+ *
+ * @method Decipher
+ * @static
+ * @param password {[Number]|String} The password to use, see {{#crossLink &quot;Password&quot;}}{{/crossLink}} for valid formats.
+ * @return {Vigenere} The Decipher.
+ */
+Vigenere.Decipher = function (password) {
+	return new Vigenere(new Password(password).forDecryption.to.shiftArray());
+};
 
-    <div class="yui3-u-1-2">
-    </div>
+module.exports = Vigenere;
+
+    </pre>
 </div>
                     </div>
                 </div>

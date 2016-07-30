@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/rot5.js - caesar-salad</title>
+    <title>index.js - caesar-salad</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
+    <link rel="shortcut icon" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -17,7 +17,7 @@
                 <h1><img src="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52" title="caesar-salad">caesar-salad</h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: v0.1.7</em>
+            <em>API Docs for: v1.0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -48,6 +48,7 @@
                                 <li><a href="../classes/SubstitutionCipher.html">SubstitutionCipher</a></li>
                                 <li><a href="../classes/Vigenere.html">Vigenere</a></li>
                             </ul>
+                
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/caesar-salad.html">caesar-salad</a></li>
@@ -84,83 +85,95 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib/rot5.js</h1>
-                        
-                        <div class="file">
-                            <pre class="code prettyprint linenums">
-                        import SubstitutionCipher from &#x27;./substitution-cipher&#x27;;
-                        
-                        class ROT5 extends SubstitutionCipher {
-                          /**
-                           * The _ROT5 Cipher_ is a monoalphabetic substitution cipher rotating &#x60;0..9&#x60; characters.
-                           *
-                           * Examples using static factory methods:
-                           *
-                           *     ROT5.Cipher().crypt(&#x27;0123456789&#x27;);   // returns: &#x27;5678901234&#x27;
-                           *     ROT5.Decipher().crypt(&#x27;5678901234&#x27;); // returns: &#x27;0123456789&#x27;
-                           *
-                           * Examples using constructors:
-                           *
-                           *     new ROT5().crypt(&#x27;0123456789&#x27;);       // returns: &#x27;5678901234&#x27;
-                           *     new ROT5().crypt(&#x27;5678901234&#x27;);       // returns: &#x27;0123456789&#x27;
-                           *
-                           * See {{#ext &quot;Wikipedia&quot; &quot;en.wikipedia.org/wiki/ROT13#Variants&quot;}}{{/ext}} for details.
-                           *
-                           * @class ROT5
-                           * @extends SubstitutionCipher
-                           * @constructor
-                           */
-                        
-                          /**
-                           * Substitutes only charCodes of &#x60;0..9&#x60; characters.
-                           *
-                           * @protected
-                           * @method _substituteCharCode
-                           * @param charCode {Number} the charCode to substitute.
-                           * @return {Number} The substituted charCode.
-                           */
-                          _substituteCharCode(charCode) {
-                            //  &#x27;0&#x27;   =^=   48;   &#x27;4&#x27;   =^=   52;
-                            if (charCode &gt;= 48 &amp;&amp; charCode &lt;= 52) {
-                              return charCode + 5;
-                            }
-                        
-                            //  &#x27;5&#x27;   =^=   53;   &#x27;9&#x27;   =^=   57;
-                            if (charCode &gt;= 53 &amp;&amp; charCode &lt;= 57) {
-                              return charCode - 5;
-                            }
-                        
-                            return charCode;
-                          }
-                        }
-                        
-                        /**
-                         * Static factory method to create cipher instances.
-                         *
-                         * @method Cipher
-                         * @static
-                         * @return {ROT5} The Cipher.
-                         */
-                        ROT5.Cipher = function() {
-                          return new ROT5();
-                        };
-                        
-                        /**
-                         * Static factory method to create decipher instances.
-                         *
-                         * @method Decipher
-                         * @static
-                         * @return {ROT5} The Decipher.
-                         */
-                        ROT5.Decipher = ROT5.Cipher;
-                        
-                        // ES6-CommonJs interop:
-                        ROT5[&#x27;default&#x27;] = ROT5;
-                        
-                        export default ROT5;
-                        
-                            </pre>
-                        </div>
+<h1 class="file-heading">File: index.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+const SubstitutionCipher = require(&#x27;./substitution-cipher&#x27;);
+const Caesar = require(&#x27;./caesar&#x27;);
+const ROT5 = require(&#x27;./rot5&#x27;);
+const ROT13 = require(&#x27;./rot13&#x27;);
+const ROT18 = require(&#x27;./rot18&#x27;);
+const ROT47 = require(&#x27;./rot47&#x27;);
+const Vigenere = require(&#x27;./vigenere&#x27;);
+
+/**
+ * @module caesar-salad
+ * @main caesar-salad
+ */
+
+/**
+ * Caesar-Salad Facade:
+ *
+ *     CaesarSalad.Caesar.Cipher(&#x27;c&#x27;).crypt(&#x27;ABCD&#x27;);   // returns: &#x27;CDEF&#x27;
+ *     CaesarSalad.Caesar.Decipher(&#x27;c&#x27;).crypt(&#x27;CDEF&#x27;); // returns: &#x27;ABCD&#x27;
+ *
+ * @class CaesarSalad
+ */
+var CaesarSalad = {};
+
+/**
+ * Names of supported ciphers (and deciphers).
+ *
+ * @property ciphers
+ * @type {Array}
+ * @default [ &#x27;Caesar&#x27;, &#x27;ROT5&#x27;, &#x27;ROT13&#x27;, &#x27;ROT18&#x27;, &#x27;ROT47&#x27;, &#x27;Vigenere&#x27; ]
+ */
+CaesarSalad.ciphers = [
+	Caesar.name,
+	ROT5.name,
+	ROT13.name,
+	ROT18.name,
+	ROT47.name,
+	Vigenere.name
+];
+
+/**
+ * @property SubstitutionCipher
+ * @type SubstitutionCipher
+ */
+CaesarSalad.SubstitutionCipher = SubstitutionCipher;
+
+/**
+ * @property Caesar
+ * @type Caesar
+ */
+CaesarSalad.Caesar = Caesar;
+
+/**
+ * @property ROT5
+ * @type ROT5
+ */
+CaesarSalad.ROT5 = ROT5;
+
+/**
+ * @property ROT13
+ * @type ROT13
+ */
+CaesarSalad.ROT13 = ROT13;
+
+/**
+ * @property ROT18
+ * @type ROT18
+ */
+CaesarSalad.ROT18 = ROT18;
+
+/**
+ * @property ROT47
+ * @type ROT47
+ */
+CaesarSalad.ROT47 = ROT47;
+
+/**
+ * @property Vigenere
+ * @type Vigenere
+ */
+CaesarSalad.Vigenere = Vigenere;
+
+module.exports = CaesarSalad;
+
+    </pre>
+</div>
                     </div>
                 </div>
             </div>

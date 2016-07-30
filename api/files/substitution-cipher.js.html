@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/caesar-salad.js - caesar-salad</title>
+    <title>substitution-cipher.js - caesar-salad</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
+    <link rel="shortcut icon" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -17,7 +17,7 @@
                 <h1><img src="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52" title="caesar-salad">caesar-salad</h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: v0.1.7</em>
+            <em>API Docs for: v1.0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -48,6 +48,7 @@
                                 <li><a href="../classes/SubstitutionCipher.html">SubstitutionCipher</a></li>
                                 <li><a href="../classes/Vigenere.html">Vigenere</a></li>
                             </ul>
+                
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/caesar-salad.html">caesar-salad</a></li>
@@ -84,98 +85,72 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib/caesar-salad.js</h1>
-                        
-                        <div class="file">
-                            <pre class="code prettyprint linenums">
-                        import SubstitutionCipher from &#x27;./substitution-cipher&#x27;;
-                        import Caesar from &#x27;./caesar&#x27;;
-                        import ROT5 from &#x27;./rot5&#x27;;
-                        import ROT13 from &#x27;./rot13&#x27;;
-                        import ROT18 from &#x27;./rot18&#x27;;
-                        import ROT47 from &#x27;./rot47&#x27;;
-                        import Vigenere from &#x27;./vigenere&#x27;;
-                        
-                        /**
-                         * @module caesar-salad
-                         * @main caesar-salad
-                         */
-                        
-                        /**
-                         * Caesar-Salad Facade:
-                         *
-                         *     CaesarSalad.Caesar.Cipher(&#x27;c&#x27;).crypt(&#x27;ABCD&#x27;);   // returns: &#x27;CDEF&#x27;
-                         *     CaesarSalad.Caesar.Decipher(&#x27;c&#x27;).crypt(&#x27;CDEF&#x27;); // returns: &#x27;ABCD&#x27;
-                         *
-                         * @class CaesarSalad
-                         */
-                        var CaesarSalad = {};
-                        
-                        /**
-                         * Names of supported ciphers (and deciphers).
-                         *
-                         * @property ciphers
-                         * @type {Array}
-                         * @default [ &#x27;Caesar&#x27;, &#x27;ROT5&#x27;, &#x27;ROT13&#x27;, &#x27;ROT18&#x27;, &#x27;ROT47&#x27;, &#x27;Vigenere&#x27; ]
-                         */
-                        CaesarSalad.ciphers = [
-                          Caesar.name,
-                          ROT5.name,
-                          ROT13.name,
-                          ROT18.name,
-                          ROT47.name,
-                          Vigenere.name
-                        ];
-                        
-                        /**
-                         * @property SubstitutionCipher
-                         * @type SubstitutionCipher
-                         */
-                        CaesarSalad.SubstitutionCipher = SubstitutionCipher;
-                        
-                        /**
-                         * @property Caesar
-                         * @type Caesar
-                         */
-                        CaesarSalad.Caesar = Caesar;
-                        
-                        /**
-                         * @property ROT5
-                         * @type ROT5
-                         */
-                        CaesarSalad.ROT5 = ROT5;
-                        
-                        /**
-                         * @property ROT13
-                         * @type ROT13
-                         */
-                        CaesarSalad.ROT13 = ROT13;
-                        
-                        /**
-                         * @property ROT18
-                         * @type ROT18
-                         */
-                        CaesarSalad.ROT18 = ROT18;
-                        
-                        /**
-                         * @property ROT47
-                         * @type ROT47
-                         */
-                        CaesarSalad.ROT47 = ROT47;
-                        
-                        /**
-                         * @property Vigenere
-                         * @type Vigenere
-                         */
-                        CaesarSalad.Vigenere = Vigenere;
-                        
-                        // ES6-CommonJs interop:
-                        CaesarSalad[&#x27;default&#x27;] = CaesarSalad;
-                        
-                        export default CaesarSalad;
-                        
-                            </pre>
-                        </div>
+<h1 class="file-heading">File: substitution-cipher.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+const CharBuffer = require(&#x27;char-buffer&#x27;);
+
+/**
+ * Abstract base class for substitution ciphers (and substitution deciphers).
+ *
+ * Substitution ciphers replace letters of plaintext by other letters. See &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/Substitution_cipher&quot;&gt;Wikipedia&lt;/a&gt; for details.
+ *
+ * @class SubstitutionCipher
+ */
+class SubstitutionCipher {
+	/**
+	 * Abstract method to substitute a single charCode.
+	 *
+	 * @method _substituteCharCode
+	 * @param input {number} The charCode to process.
+	 * @return {Number} The processed charCode.
+	 */
+	_substituteCharCode() {
+		throw new Error(&#x27;_substituteCharCode not implemented&#x27;);
+	}
+
+	/**
+	 * Template method to encrypt/decrypt strings substituting its input charCode by charCode.
+	 *
+	 * @method crypt
+	 * @param input {String} The string to process.
+	 * @return {Number} The processed string.
+	 */
+	crypt(input) {
+		return CharBuffer.fromString(input,
+			this._substituteCharCode, this).toString();
+	}
+}
+
+/**
+ * Abstract method to create a cipher instance.
+ *
+ * @method Cipher
+ * @static
+ * @return {SubstitutionCipher} The Cipher.
+ */
+SubstitutionCipher.Cipher = function () {
+	throw new Error(&#x27;Cipher not implemented&#x27;);
+};
+
+/**
+ * Abstract method to create a decipher instance.
+ *
+ * @method Decipher
+ * @static
+ * @return {SubstitutionCipher} The Decipher.
+ */
+SubstitutionCipher.Decipher = function () {
+	throw new Error(&#x27;Decipher not implemented&#x27;);
+};
+
+module.exports = SubstitutionCipher;
+
+    </pre>
+</div>
                     </div>
                 </div>
             </div>

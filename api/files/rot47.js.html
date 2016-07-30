@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>lib/substitution-cipher.js - caesar-salad</title>
+    <title>rot47.js - caesar-salad</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
+    <link rel="shortcut icon" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -17,7 +17,7 @@
                 <h1><img src="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52" title="caesar-salad">caesar-salad</h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: v0.1.7</em>
+            <em>API Docs for: v1.0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -48,6 +48,7 @@
                                 <li><a href="../classes/SubstitutionCipher.html">SubstitutionCipher</a></li>
                                 <li><a href="../classes/Vigenere.html">Vigenere</a></li>
                             </ul>
+                
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/caesar-salad.html">caesar-salad</a></li>
@@ -84,77 +85,88 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: lib/substitution-cipher.js</h1>
-                        
-                        <div class="file">
-                            <pre class="code prettyprint linenums">
-                        import CharBuffer from &#x27;char-buffer&#x27;;
-                        
-                        /**
-                         * Abstract base class for substitution ciphers (and substitution deciphers).
-                         *
-                         * Substitution ciphers replace letters of plaintext by other letters. See {{#ext &quot;Wikipedia&quot; &quot;en.wikipedia.org/wiki/Substitution_cipher&quot;}}{{/ext}} for details.
-                         *
-                         * @class SubstitutionCipher
-                         */
-                        class SubstitutionCipher {
-                        
-                          constructor() {
-                          }
-                        
-                          /**
-                           * Abstract method to substitute a single charCode.
-                           *
-                           * @method _substituteCharCode
-                           * @param input {number} The charCode to process.
-                           * @return {Number} The processed charCode.
-                           */
-                          _substituteCharCode() {
-                            throw Error(&#x27;_substituteCharCode not implemented&#x27;);
-                          }
-                        
-                          /**
-                           * Template method to encrypt/decrypt strings substituting its input charCode by charCode.
-                           *
-                           * @method crypt
-                           * @param input {String} The string to process.
-                           * @return {Number} The processed string.
-                           */
-                          crypt(input) {
-                            return CharBuffer.fromString(input,
-                              this._substituteCharCode, this).toString();
-                          }
-                        }
-                        
-                        /**
-                         * Abstract method to create a cipher instance.
-                         *
-                         * @method Cipher
-                         * @static
-                         * @return {SubstitutionCipher} The Cipher.
-                         */
-                        SubstitutionCipher.Cipher = function() {
-                          throw Error(&#x27;Cipher not implemented&#x27;);
-                        };
-                        
-                        /**
-                         * Abstract method to create a decipher instance.
-                         *
-                         * @method Decipher
-                         * @static
-                         * @return {SubstitutionCipher} The Decipher.
-                         */
-                        SubstitutionCipher.Decipher = function() {
-                          throw Error(&#x27;Decipher not implemented&#x27;);
-                        };
-                        
-                        // ES6-CommonJs interop:
-                        SubstitutionCipher[&#x27;default&#x27;] = SubstitutionCipher;
-                        
-                        export default SubstitutionCipher;
-                        
-                            </pre>
-                        </div>
+<h1 class="file-heading">File: rot47.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+const SubstitutionCipher = require(&#x27;./substitution-cipher&#x27;);
+
+class ROT47 extends SubstitutionCipher {
+	/**
+	 * The _ROT47 Cipher_ is a monoalphabetic substitution cipher rotating &#x60;!..~&#x60; characters.
+	 *
+	 * Examples using static factory methods:
+	 *
+	 *     ROT47.Cipher().crypt(&#x27;!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~&#x27;);
+	 *     // returns: &#x27;PQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNO&#x27;
+	 *
+	 *     ROT47.Decipher().crypt(&#x27;PQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNO&#x27;);
+	 *     // returns: &#x27;!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~&#x27;
+	 *
+	 * Examples using constructors:
+	 *
+	 *     new ROT47().crypt(&#x27;!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~&#x27;);
+	 *     // returns: &#x27;PQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNO&#x27;
+	 *
+	 *     new ROT47().crypt(&#x27;PQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNO&#x27;);
+	 *     // returns: &#x27;!&quot;#$%&amp;\&#x27;()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_&#x60;abcdefghijklmnopqrstuvwxyz{|}~&#x27;
+	 *
+	 * See &lt;a class=&quot;external&quot; href=&quot;https://en.wikipedia.org/wiki/ROT13#Variants&quot;&gt;Wikipedia&lt;/a&gt; for details.
+	 *
+	 * @class ROT47
+	 * @extends SubstitutionCipher
+	 * @constructor
+	 */
+
+	/**
+	 * Substitutes only charCodes of &#x60;!..~&#x60; characters.
+	 *
+	 * @protected
+	 * @method _substituteCharCode
+	 * @param charCode {Number} the charCode to substitute.
+	 * @return {Number} The substituted charCode.
+	 */
+	_substituteCharCode(charCode) {
+		//  &#x27;!&#x27;   =^=   33;   &#x27;O&#x27;   =^=   79;
+		if (charCode &gt;= 33 &amp;&amp; charCode &lt;= 79) {
+			return charCode + 47;
+		}
+
+		//  &#x27;P&#x27;   =^=   80;   &#x27;~&#x27;   =^=   126;
+		if (charCode &gt;= 80 &amp;&amp; charCode &lt;= 126) {
+			return charCode - 47;
+		}
+
+		return charCode;
+	}
+}
+
+/**
+ * Static factory method to create cipher instances.
+ *
+ * @method Cipher
+ * @static
+ * @return {ROT47} The Cipher.
+ */
+ROT47.Cipher = function () {
+	return new ROT47();
+};
+
+/**
+ * Static factory method to create decipher instances.
+ *
+ * @method Decipher
+ * @static
+ * @return {ROT47} The Decipher.
+ */
+ROT47.Decipher = ROT47.Cipher;
+
+module.exports = ROT47;
+
+    </pre>
+</div>
                     </div>
                 </div>
             </div>

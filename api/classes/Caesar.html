@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
-    <link rel="shortcut icon" type="image/png" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
+    <link rel="shortcut icon" href="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=16">
     <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
 </head>
 <body class="yui3-skin-sam">
@@ -17,7 +17,7 @@
                 <h1><img src="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52" title="caesar-salad">caesar-salad</h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: v0.1.7</em>
+            <em>API Docs for: v1.0.1</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -48,6 +48,7 @@
                                 <li><a href="../classes/SubstitutionCipher.html">SubstitutionCipher</a></li>
                                 <li><a href="../classes/Vigenere.html">Vigenere</a></li>
                             </ul>
+                
                 
                             <ul id="api-modules" class="apis modules">
                                 <li><a href="../modules/caesar-salad.html">caesar-salad</a></li>
@@ -84,473 +85,481 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1>Caesar Class</h1>
-                        <div class="box meta">
-                        
-                                <div class="extends">
-                                    Extends <a href="../classes/SubstitutionCipher.html" class="crosslink">SubstitutionCipher</a>
-                                </div>
-                        
-                                <div class="foundat">
-                                    Defined in: <a href="../files/lib_caesar.js.html#l5"><code>lib&#x2F;caesar.js:5</code></a>
-                                </div>
-                        
-                                    Module: <a href="../modules/caesar-salad.html">caesar-salad</a>
-                        
-                        </div>
-                        
-                        
-                        <div class="box intro">
-                            <p>The <em>Caesar Cipher</em> is a monoalphabetic substitution cipher, rotating <code>A..Z</code> and <code>a..z</code> characters.</p>
-                        <p>Examples using static factory methods:</p>
-                        <pre class="code prettyprint"><code>Caesar.Cipher('c').crypt('ABCD');   // returns: 'CDEF'
-                        Caesar.Decipher('c').crypt('CDEF'); // returns: 'ABCD'
-                        </code></pre>
-                        <p>Examples using constructors:</p>
-                        <pre class="code prettyprint"><code>new Caesar( 2).crypt('ABCD');       // returns: 'CDEF'
-                        new Caesar(-2).crypt('CDEF');       // returns: 'ABCD'
-                        new Caesar(24).crypt('CDEF');       // returns: 'ABCD'
-                        </code></pre>
-                        <p>See <a class="external" href="http://en.wikipedia.org/wiki/Caesar_cipher">Wikipedia</a> for details.</p>
-                        
-                        </div>
-                        
-                            <div class="constructor">
-                                <h2>Constructor</h2>
-                                <div id="method_Caesar" class="method item">
-                                    <h3 class="name"><code>Caesar</code></h3>
-                                
-                                        <div class="args">
-                                            <span class="paren">(</span><ul class="args-list inline commas">
-                                                <li class="arg">
-                                                        <code>shift</code>
-                                                </li>
-                                            </ul><span class="paren">)</span>
-                                        </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                    <div class="meta">
-                                                <p>
-                                                Defined in
-                                        <a href="../files/lib_caesar.js.html#l5"><code>lib&#x2F;caesar.js:5</code></a>
-                                        </p>
-                                
-                                
-                                
-                                    </div>
-                                
-                                    <div class="description">
-                                        
-                                    </div>
-                                
-                                        <div class="params">
-                                            <h4>Parameters:</h4>
-                                
-                                            <ul class="params-list">
-                                                <li class="param">
-                                                        <code class="param-name">shift</code>
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                
-                                
-                                                    <div class="param-description">
-                                                        <p>The number to rotate the charCodes <code>mod 26</code> and therefore the password of the caesar cipher.</p>
-                                
-                                                    </div>
-                                
-                                                </li>
-                                            </ul>
-                                        </div>
-                                
-                                
-                                </div>
-                            </div>
-                        
-                        <div id="classdocs" class="tabview">
-                            <ul class="api-class-tabs">
-                                <li class="api-class-tab index"><a href="#index">Index</a></li>
-                        
-                                    <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
-                            </ul>
-                        
-                            <div>
-                                <div id="index" class="api-class-tabpanel index">
-                                    <h2 class="off-left">Item Index</h2>
-                        
-                                        <div class="index-section methods">
-                                            <h3>Methods</h3>
-                        
-                                            <ul class="index-list methods extends">
-                                                    <li class="index-item method protected">
-                                                        <a href="#method__rotate">_rotate</a>
-                        
-                                                    </li>
-                                                    <li class="index-item method protected inherited">
-                                                        <a href="#method__substituteCharCode">_substituteCharCode</a>
-                        
-                                                    </li>
-                                                    <li class="index-item method">
-                                                        <a href="#method_Cipher">Cipher</a>
-                        
-                                                            <span class="flag static">static</span>
-                                                    </li>
-                                                    <li class="index-item method inherited">
-                                                        <a href="#method_crypt">crypt</a>
-                        
-                                                    </li>
-                                                    <li class="index-item method">
-                                                        <a href="#method_Decipher">Decipher</a>
-                        
-                                                            <span class="flag static">static</span>
-                                                    </li>
-                                            </ul>
-                                        </div>
-                        
-                        
-                        
-                                </div>
-                        
-                                    <div id="methods" class="api-class-tabpanel">
-                                        <h2 class="off-left">Methods</h2>
-                        
-                                            <div id="method__rotate" class="method item protected">
-                                                <h3 class="name"><code>_rotate</code></h3>
-                                            
-                                                    <div class="args">
-                                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                                            <li class="arg">
-                                                                    <code>charCode</code>
-                                                            </li>
-                                                        </ul><span class="paren">)</span>
-                                                    </div>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                    </span>
-                                            
-                                            
-                                                    <span class="flag protected">protected</span>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>
-                                                            Defined in
-                                                    <a href="../files/lib_caesar.js.html#l32"><code>lib&#x2F;caesar.js:32</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Return the rotated charCode.</p>
-                                            
-                                                </div>
-                                            
-                                                    <div class="params">
-                                                        <h4>Parameters:</h4>
-                                            
-                                                        <ul class="params-list">
-                                                            <li class="param">
-                                                                    <code class="param-name">charCode</code>
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                            
-                                            
-                                                                <div class="param-description">
-                                                                    <p>the charCode to rotate</p>
-                                            
-                                                                </div>
-                                            
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>: <p><code>(charCode + shift) % 26</code></p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method__substituteCharCode" class="method item protected">
-                                                <h3 class="name"><code>_substituteCharCode</code></h3>
-                                            
-                                                    <div class="args">
-                                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                                            <li class="arg">
-                                                                    <code>charCode</code>
-                                                            </li>
-                                                        </ul><span class="paren">)</span>
-                                                    </div>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                    </span>
-                                            
-                                            
-                                                    <span class="flag protected">protected</span>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                        <p>Inherited from
-                                                        <a href="../classes/SubstitutionCipher.html#method__substituteCharCode">
-                                                            SubstitutionCipher
-                                                        </a>
-                                                        but overwritten in
-                                                    <a href="../files/lib_caesar.js.html#l44"><code>lib&#x2F;caesar.js:44</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Substitutes only charCodes of <code>A..Z</code> and <code>a..z</code> characters.</p>
-                                            
-                                                </div>
-                                            
-                                                    <div class="params">
-                                                        <h4>Parameters:</h4>
-                                            
-                                                        <ul class="params-list">
-                                                            <li class="param">
-                                                                    <code class="param-name">charCode</code>
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                            
-                                            
-                                                                <div class="param-description">
-                                                                    <p>the charCode to substitute.</p>
-                                            
-                                                                </div>
-                                            
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>: <p>The substituted charCode.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method_Cipher" class="method item">
-                                                <h3 class="name"><code>Cipher</code></h3>
-                                            
-                                                    <div class="args">
-                                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                                            <li class="arg">
-                                                                    <code>password</code>
-                                                            </li>
-                                                        </ul><span class="paren">)</span>
-                                                    </div>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>
-                                                    </span>
-                                            
-                                            
-                                            
-                                            
-                                                    <span class="flag static">static</span>
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>
-                                                            Defined in
-                                                    <a href="../files/lib_caesar.js.html#l67"><code>lib&#x2F;caesar.js:67</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Static factory method to create cipher instances.</p>
-                                            
-                                                </div>
-                                            
-                                                    <div class="params">
-                                                        <h4>Parameters:</h4>
-                                            
-                                                        <ul class="params-list">
-                                                            <li class="param">
-                                                                    <code class="param-name">password</code>
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                            
-                                            
-                                                                <div class="param-description">
-                                                                    <p>The password to use, see <a href="../classes/Password.html" class="crosslink">Password</a> for valid formats.</p>
-                                            
-                                                                </div>
-                                            
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>: <p>The Cipher.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method_crypt" class="method item inherited">
-                                                <h3 class="name"><code>crypt</code></h3>
-                                            
-                                                    <div class="args">
-                                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                                            <li class="arg">
-                                                                    <code>input</code>
-                                                            </li>
-                                                        </ul><span class="paren">)</span>
-                                                    </div>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
-                                                    </span>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>Inherited from
-                                                            <a href="../classes/SubstitutionCipher.html#method_crypt">SubstitutionCipher</a>:
-                                                    <a href="../files/lib_substitution-cipher.js.html#l26"><code>lib&#x2F;substitution-cipher.js:26</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Template method to encrypt/decrypt strings substituting its input charCode by charCode.</p>
-                                            
-                                                </div>
-                                            
-                                                    <div class="params">
-                                                        <h4>Parameters:</h4>
-                                            
-                                                        <ul class="params-list">
-                                                            <li class="param">
-                                                                    <code class="param-name">input</code>
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                            
-                                            
-                                                                <div class="param-description">
-                                                                    <p>The string to process.</p>
-                                            
-                                                                </div>
-                                            
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>: <p>The processed string.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                            <div id="method_Decipher" class="method item">
-                                                <h3 class="name"><code>Decipher</code></h3>
-                                            
-                                                    <div class="args">
-                                                        <span class="paren">(</span><ul class="args-list inline commas">
-                                                            <li class="arg">
-                                                                    <code>password</code>
-                                                            </li>
-                                                        </ul><span class="paren">)</span>
-                                                    </div>
-                                            
-                                                    <span class="returns-inline">
-                                                        <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>
-                                                    </span>
-                                            
-                                            
-                                            
-                                            
-                                                    <span class="flag static">static</span>
-                                            
-                                            
-                                            
-                                                <div class="meta">
-                                                            <p>
-                                                            Defined in
-                                                    <a href="../files/lib_caesar.js.html#l79"><code>lib&#x2F;caesar.js:79</code></a>
-                                                    </p>
-                                            
-                                            
-                                            
-                                                </div>
-                                            
-                                                <div class="description">
-                                                    <p>Static factory method to create decipher instances.</p>
-                                            
-                                                </div>
-                                            
-                                                    <div class="params">
-                                                        <h4>Parameters:</h4>
-                                            
-                                                        <ul class="params-list">
-                                                            <li class="param">
-                                                                    <code class="param-name">password</code>
-                                                                    <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                                            
-                                            
-                                                                <div class="param-description">
-                                                                    <p>The password to use, see <a href="../classes/Password.html" class="crosslink">Password</a> for valid formats.</p>
-                                            
-                                                                </div>
-                                            
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                            
-                                                    <div class="returns">
-                                                        <h4>Returns:</h4>
-                                            
-                                                        <div class="returns-description">
-                                                                    <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>: <p>The Decipher.</p>
-                                            
-                                                        </div>
-                                                    </div>
-                                            
-                                            </div>
-                                    </div>
-                        
-                        
-                        
-                            </div>
-                        </div>
+<h1>Caesar Class</h1>
+<div class="box meta">
+
+        <div class="extends">
+            Extends <a href="../classes/SubstitutionCipher.html" class="crosslink">SubstitutionCipher</a>
+        </div>
+
+        <div class="foundat">
+            Defined in: <a href="../files/caesar.js.html#l6"><code>caesar.js:6</code></a>
+        </div>
+
+            Module: <a href="../modules/caesar-salad.html">caesar-salad</a>
+
+</div>
+
+
+<div class="box intro">
+    <p>The <em>Caesar Cipher</em> is a monoalphabetic substitution cipher, rotating <code>A..Z</code> and <code>a..z</code> characters.</p>
+<p>Examples using static factory methods:</p>
+<pre class="code prettyprint"><code>Caesar.Cipher('c').crypt('ABCD');   // returns: 'CDEF'
+Caesar.Decipher('c').crypt('CDEF'); // returns: 'ABCD'
+</code></pre>
+<p>Examples using constructors:</p>
+<pre class="code prettyprint"><code>new Caesar( 2).crypt('ABCD');       // returns: 'CDEF'
+new Caesar(-2).crypt('CDEF');       // returns: 'ABCD'
+new Caesar(24).crypt('CDEF');       // returns: 'ABCD'
+</code></pre>
+<p>See <a class="external" href="https://en.wikipedia.org/wiki/Caesar_cipher">Wikipedia</a> for details.</p>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+<div id="method_Caesar" class="method item">
+    <h3 class="name"><code>Caesar</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>shift</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/caesar.js.html#l6"><code>caesar.js:6</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">shift</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                        <p>The number to rotate the charCodes <code>mod 26</code> and therefore the password of the caesar cipher.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method protected">
+                                <a href="#method__rotate">_rotate</a>
+
+                            </li>
+                            <li class="index-item method protected inherited">
+                                <a href="#method__substituteCharCode">_substituteCharCode</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_Cipher">Cipher</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_crypt">crypt</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_Decipher">Decipher</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                    </ul>
+                </div>
+
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method__rotate" class="method item protected">
+    <h3 class="name"><code>_rotate</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>charCode</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+
+
+        <span class="flag protected">protected</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/caesar.js.html#l33"><code>caesar.js:33</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Return the rotated charCode.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">charCode</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                        <p>the charCode to rotate</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    <p><code>(charCode + shift) % 26</code></p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method__substituteCharCode" class="method item protected">
+    <h3 class="name"><code>_substituteCharCode</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>charCode</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+
+
+        <span class="flag protected">protected</span>
+
+
+
+
+
+    <div class="meta">
+            <p>Inherited from
+            <a href="../classes/SubstitutionCipher.html#method__substituteCharCode">
+                SubstitutionCipher
+            </a>
+            but overwritten in
+        <a href="../files/caesar.js.html#l45"><code>caesar.js:45</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Substitutes only charCodes of <code>A..Z</code> and <code>a..z</code> characters.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">charCode</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                        <p>the charCode to substitute.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    <p>The substituted charCode.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_Cipher" class="method item">
+    <h3 class="name"><code>Cipher</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>password</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/caesar.js.html#l68"><code>caesar.js:68</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Static factory method to create cipher instances.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">password</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The password to use, see <a href="../classes/Password.html" class="crosslink">Password</a> for valid formats.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>:
+                    <p>The Cipher.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_crypt" class="method item inherited">
+    <h3 class="name"><code>crypt</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>input</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/SubstitutionCipher.html#method_crypt">SubstitutionCipher</a>:
+        <a href="../files/substitution-cipher.js.html#l24"><code>substitution-cipher.js:24</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Template method to encrypt/decrypt strings substituting its input charCode by charCode.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">input</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        The string to process.
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+                    The processed string.
+            </div>
+        </div>
+
+
+</div>
+<div id="method_Decipher" class="method item">
+    <h3 class="name"><code>Decipher</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>password</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>
+        </span>
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/caesar.js.html#l80"><code>caesar.js:80</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Static factory method to create decipher instances.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">password</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The password to use, see <a href="../classes/Password.html" class="crosslink">Password</a> for valid formats.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="../classes/Caesar.html" class="crosslink">Caesar</a></span>:
+                    <p>The Decipher.</p>
+
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+
+
+    </div>
+</div>
                     </div>
                 </div>
             </div>

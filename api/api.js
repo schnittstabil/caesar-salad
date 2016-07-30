@@ -19,6 +19,7 @@ YUI.add("yuidoc-meta", function(Y) {
             "displayName": "caesar-salad",
             "name": "caesar-salad"
         }
-    ]
+    ],
+    "elements": []
 } };
 });
