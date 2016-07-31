@@ -41,7 +41,7 @@ class SubstitutionCipher {
  * @static
  * @return {SubstitutionCipher} The Cipher.
  */
-SubstitutionCipher.Cipher = () => {
+SubstitutionCipher.Cipher = function () {
 	throw new Error('Cipher not implemented');
 };
 
@@ -52,7 +52,7 @@ SubstitutionCipher.Cipher = () => {
  * @static
  * @return {SubstitutionCipher} The Decipher.
  */
-SubstitutionCipher.Decipher = () => {
+SubstitutionCipher.Decipher = function () {
 	throw new Error('Decipher not implemented');
 };
 
