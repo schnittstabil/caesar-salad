@@ -18,7 +18,7 @@
     "serve": "http-server"
   },
   "dependencies": {
-    "http-server": "^0.9.0",
+    "http-server": "^0.10.0",
     "jspm": "^0.16.41"
   },
   "jspm": {
