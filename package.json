@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "ava": "^1.4.1",
-    "coveralls": "^2.11.11",
+    "coveralls": "^3.0.3",
     "del-cli": "^1.1.0",
     "nyc": "^14.1.1",
     "xo": "^0.24.0",
