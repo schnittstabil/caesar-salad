@@ -17,7 +17,7 @@
                 <h1><img src="http://www.gravatar.com/avatar/8b96e2b55dc11487e365abf84a36b0e1?s=52" title="caesar-salad">caesar-salad</h1>
         </div>
         <div class="yui3-u-1-4 version">
-            <em>API Docs for: v1.0.1</em>
+            <em>API Docs for: v2.0.0</em>
         </div>
     </div>
     <div id="bd" class="yui3-g">
@@ -89,6 +89,7 @@
 
 <div class="file">
     <pre class="code prettyprint linenums">
+/* eslint-disable no-unused-vars,valid-jsdoc */
 &#x27;use strict&#x27;;
 
 const CharBuffer = require(&#x27;char-buffer&#x27;);
@@ -105,10 +106,10 @@ class SubstitutionCipher {
 	 * Abstract method to substitute a single charCode.
 	 *
 	 * @method _substituteCharCode
-	 * @param input {number} The charCode to process.
+	 * @param {Number} input The charCode to process.
 	 * @return {Number} The processed charCode.
 	 */
-	_substituteCharCode() {
+	_substituteCharCode(input) {
 		throw new Error(&#x27;_substituteCharCode not implemented&#x27;);
 	}
 
@@ -116,7 +117,7 @@ class SubstitutionCipher {
 	 * Template method to encrypt/decrypt strings substituting its input charCode by charCode.
 	 *
 	 * @method crypt
-	 * @param input {String} The string to process.
+	 * @param {String} input The string to process.
 	 * @return {Number} The processed string.
 	 */
 	crypt(input) {
