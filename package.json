@@ -27,10 +27,10 @@
     "char-buffer": "^1.0.0"
   },
   "devDependencies": {
-    "ava": "^0.15.2",
+    "ava": "^1.4.1",
     "coveralls": "^2.11.11",
     "del-cli": "^1.1.0",
-    "nyc": "^7.1.0-candidate3",
+    "nyc": "^14.1.1",
     "xo": "^0.24.0",
     "yuidocjs": "^0.10.2"
   },

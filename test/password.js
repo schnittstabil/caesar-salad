@@ -16,20 +16,20 @@ import Password from '../password';
 		shift: 1
 	},
 	{
-		pwd: '1',
-		shift: 1
+		pwd: '2',
+		shift: 2
 	},
 	{
-		pwd: '-1',
-		shift: -1
+		pwd: '-3',
+		shift: -3
 	},
 	{
-		pwd: 'b',
-		shift: 1
+		pwd: 'd',
+		shift: 3
 	},
 	{
-		pwd: 'bc',
-		shift: 1
+		pwd: 'ef',
+		shift: 4
 	}
 ].forEach(task => {
 	test(task.pwd + ' should be parsed to ' + task.shift, t => {
@@ -39,24 +39,24 @@ import Password from '../password';
 
 [
 	{
-		pwd: 1,
-		shiftArray: [1]
+		pwd: 25,
+		shiftArray: [25]
 	},
 	{
-		pwd: [1, 2],
-		shiftArray: [1, 2]
+		pwd: [23, 24],
+		shiftArray: [23, 24]
 	},
 	{
-		pwd: '1,2',
-		shiftArray: [1, 2]
+		pwd: '21,22',
+		shiftArray: [21, 22]
 	},
 	{
-		pwd: '1,-2',
-		shiftArray: [1, -2]
+		pwd: '1,-2,3',
+		shiftArray: [1, -2, 3]
 	},
 	{
-		pwd: 'bc',
-		shiftArray: [1, 2]
+		pwd: 'tu',
+		shiftArray: [19, 20]
 	}
 ].forEach(task => {
 	test(task.pwd + ' should be parsed to ' + task.shiftArray, t => {

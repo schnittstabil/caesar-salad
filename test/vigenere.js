@@ -59,13 +59,13 @@ import cryptTest from './helpers/crypt-test';
 		expected: 'vtfs@fybnqmf.dpn'
 	},
 	{
-		title: 'string number array password',
+		title: 'string number array password [1]',
 		input: 'user@example.com',
 		password: '1,2,3,4',
 		expected: 'vuhv@fzdqqnh.gpo'
 	},
 	{
-		title: 'string number array password',
+		title: 'string number array password [2]',
 		input: 'user@example.com',
 		password: [1, 2, 3, 4],
 		expected: 'vuhv@fzdqqnh.gpo'
