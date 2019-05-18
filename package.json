@@ -1,6 +1,6 @@
 {
   "name": "caesar-salad",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Caesar, Vigenere and ROT Ciphers.",
   "license": "MIT",
   "keywords": [
@@ -15,7 +15,7 @@
   ],
   "preferGlobal": false,
   "engines": {
-    "node": ">=4.0"
+    "node": ">=8.0"
   },
   "repository": "schnittstabil/caesar-salad-cli.git",
   "author": {
