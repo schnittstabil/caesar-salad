@@ -27,7 +27,7 @@ class ROT13 extends SubstitutionCipher {
 	 *
 	 * @protected
 	 * @method _substituteCharCode
-	 * @param charCode {Number} the charCode to substitute.
+	 * @param {Number} charCode the charCode to substitute.
 	 * @return {Number} The substituted charCode.
 	 */
 	_substituteCharCode(charCode) {

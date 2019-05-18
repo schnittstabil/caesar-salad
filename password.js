@@ -3,10 +3,8 @@
 function ShiftMixin() {
 	this.shift = () => this.shiftArray()[0];
 	this.shiftArray = () => {
-		var passwd = this.getPassword();
-		var forDecryption = this.symbols.indexOf('forDecryption') + 1;
-
-		passwd = passwd.map(num => forDecryption ? (26 - num) % 26 : num % 26);
+		const forDecryption = this.symbols.indexOf('forDecryption') + 1;
+		const passwd = this.getPassword().map(num => forDecryption ? (26 - num) % 26 : num % 26);
 
 		if (passwd.length === 0) {
 			return [0];
@@ -17,8 +15,8 @@ function ShiftMixin() {
 }
 
 function passwordToShiftArray(passwd) {
-	var shiftArrayRegExp = /^[-+]?[0-9]+(,[-+]?[0-9]+)*$/;
-	var shiftStringRegExp = /^[A-Za-z]*$/;
+	const shiftArrayRegExp = /^[-+]?\d+(,[-+]?\d+)*$/;
+	const shiftStringRegExp = /^[A-Za-z]*$/;
 
 	if (typeof passwd === 'undefined' || passwd === null) {
 		return [0];
@@ -43,15 +41,15 @@ function passwordToShiftArray(passwd) {
 	throw new RangeError('Unable to parse password: ' + passwd);
 }
 
-// start state: password
-var dfa = {
+// Start state: password
+const dfa = {
 	password: ['to', 'forDecryption'],
 	to: [],
 	forDecryption: ['to']
 };
 
-// start state: password
-var mixins = {
+// Start state: password
+const mixins = {
 	to: [ShiftMixin]
 };
 
@@ -85,14 +83,14 @@ class Password {
 	 *
 	 * @class Password
 	 * @constructor
-	 * @param passwd {Number|String|[Number]} The password to parse.
+	 * @param {Number|String|[Number]} passwd The password to parse.
+	 * @param {String} [symbol] internal argument for fluent interface
+	 * @param {Password} [parent] internal argument for fluent interface
 	 */
 	constructor(passwd, symbol, parent) {
 		if (!symbol) {
 			symbol = 'password';
 		}
-
-		var children = dfa[symbol];
 
 		if (parent instanceof Password) {
 			this.symbols = parent.symbols.slice();
@@ -105,13 +103,13 @@ class Password {
 
 		this.symbols.push(symbol);
 
-		// mixins
+		// Mixins
 		if (mixins[symbol]) {
 			mixins[symbol].forEach(mixin => mixin.call(this));
 		}
 
-		// create children
-		children.forEach(child => {
+		// Create children
+		dfa[symbol].forEach(child => {
 			this[child] = new Password(null, child, this);
 		});
 	}

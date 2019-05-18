@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,valid-jsdoc */
 'use strict';
 
 const CharBuffer = require('char-buffer');
@@ -14,10 +15,10 @@ class SubstitutionCipher {
 	 * Abstract method to substitute a single charCode.
 	 *
 	 * @method _substituteCharCode
-	 * @param input {number} The charCode to process.
+	 * @param {Number} input The charCode to process.
 	 * @return {Number} The processed charCode.
 	 */
-	_substituteCharCode() {
+	_substituteCharCode(input) {
 		throw new Error('_substituteCharCode not implemented');
 	}
 
@@ -25,7 +26,7 @@ class SubstitutionCipher {
 	 * Template method to encrypt/decrypt strings substituting its input charCode by charCode.
 	 *
 	 * @method crypt
-	 * @param input {String} The string to process.
+	 * @param {String} input The string to process.
 	 * @return {Number} The processed string.
 	 */
 	crypt(input) {

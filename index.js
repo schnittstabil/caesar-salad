@@ -19,7 +19,7 @@ const Vigenere = require('./vigenere');
  *
  * @class CaesarSalad
  */
-var CaesarSalad = {};
+const CaesarSalad = {};
 
 /**
  * Names of supported ciphers (and deciphers).

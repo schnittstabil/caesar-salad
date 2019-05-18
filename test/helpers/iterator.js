@@ -1,26 +1,26 @@
 exports.charRange = function * (startChar, endChar) {
-	var begin = startChar.charCodeAt(0);
-	var end = endChar.charCodeAt(0);
+	const begin = startChar.charCodeAt(0);
+	const end = endChar.charCodeAt(0);
 
-	for (var i = begin; i <= end; i++) {
+	for (let i = begin; i <= end; i++) {
 		yield String.fromCharCode(i);
 	}
 };
 
-exports.appendIterators = function * () {
-	var iterators = Array.prototype.slice.call(arguments);
+exports.appendIterators = function * (args) {
+	const iterators = Array.prototype.slice.call(...args);
 
-	for (var iterator of iterators) {
-		for (var i of iterator) {
+	for (const iterator of iterators) {
+		for (const i of iterator) {
 			yield i;
 		}
 	}
 };
 
 exports.toString = function (iterator) {
-	var buffer = '';
+	let buffer = '';
 
-	for (var i of iterator) {
+	for (const i of iterator) {
 		buffer += i;
 	}
 

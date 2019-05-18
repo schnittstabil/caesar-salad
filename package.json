@@ -31,7 +31,7 @@
     "coveralls": "^2.11.11",
     "del-cli": "^1.1.0",
     "nyc": "^7.1.0-candidate3",
-    "xo": "^0.16.0",
+    "xo": "^0.24.0",
     "yuidocjs": "^0.10.2"
   },
   "xo": {
@@ -42,19 +42,6 @@
       "resources/yuidoc/**",
       "config.js",
       "build.js"
-    ],
-    "overrides": [
-      {
-        "files": "test/_mocha.js",
-        "envs": [
-          "mocha",
-          "browser"
-        ],
-        "globals": [
-          "exposeMochaResults",
-          "xpect"
-        ]
-      }
     ]
   },
   "main": "index.js",

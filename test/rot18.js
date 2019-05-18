@@ -1,5 +1,5 @@
 import test from 'ava';
-import caesarSalad from '../';
+import caesarSalad from '..';
 
 import cryptTest from './helpers/crypt-test';
 
@@ -20,4 +20,3 @@ import cryptTest from './helpers/crypt-test';
 		expected: task.input
 	}));
 });
-

@@ -29,7 +29,7 @@ class Vigenere extends SubstitutionCipher {
 	 * @class Vigenere
 	 * @extends SubstitutionCipher
 	 * @constructor
-	 * @param shiftArray {[Number]} The array of numbers used to rotate the charCodes `mod 26` and therefore the password of the Vigenere Cipher.
+	 * @param {[Number]} shiftArray The array of numbers used to rotate the charCodes `mod 26` and therefore the password of the Vigenere Cipher.
 	 */
 	constructor(shiftArray) {
 		super();
@@ -42,7 +42,7 @@ class Vigenere extends SubstitutionCipher {
 		 *
 		 * @protected
 		 * @method _substituteCharCode
-		 * @param charCode {Number} the charCode to substitute.
+		 * @param {Number} charCode the charCode to substitute.
 		 * @return {Number} The substituted charCode.
 		 */
 		this._substituteCharCode = Caesar.prototype._substituteCharCode;
@@ -53,7 +53,7 @@ class Vigenere extends SubstitutionCipher {
 	 *
 	 * @protected
 	 * @method _rotate
-	 * @param charCode {Number} the charCode to rotate
+	 * @param {Number} charCode the charCode to rotate
 	 * @return {Number} `(charCode + shift) % 26`
 	 */
 	_rotate(charCode) {
@@ -68,7 +68,7 @@ class Vigenere extends SubstitutionCipher {
  *
  * @method Cipher
  * @static
- * @param password {[Number]|String} The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
+ * @param {[Number]|String} password The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
  * @return {Vigenere} The Cipher.
  */
 Vigenere.Cipher = function (password) {
@@ -80,7 +80,7 @@ Vigenere.Cipher = function (password) {
  *
  * @method Decipher
  * @static
- * @param password {[Number]|String} The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
+ * @param {[Number]|String} password The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
  * @return {Vigenere} The Decipher.
  */
 Vigenere.Decipher = function (password) {

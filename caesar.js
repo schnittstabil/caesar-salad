@@ -22,7 +22,7 @@ class Caesar extends SubstitutionCipher {
 	 * @class Caesar
 	 * @extends SubstitutionCipher
 	 * @constructor
-	 * @param shift {Number} The number to rotate the charCodes `mod 26` and therefore the password of the caesar cipher.
+	 * @param {Number} shift The number to rotate the charCodes `mod 26` and therefore the password of the caesar cipher.
 	 */
 	constructor(shift) {
 		super();
@@ -35,7 +35,7 @@ class Caesar extends SubstitutionCipher {
 	 *
 	 * @protected
 	 * @method _rotate
-	 * @param charCode {Number} the charCode to rotate
+	 * @param {Number} charCode the charCode to rotate
 	 * @return {Number} `(charCode + shift) % 26`
 	 */
 	_rotate(charCode) {
@@ -47,7 +47,7 @@ class Caesar extends SubstitutionCipher {
 	 *
 	 * @protected
 	 * @method _substituteCharCode
-	 * @param charCode {Number} the charCode to substitute.
+	 * @param {Number} charCode the charCode to substitute.
 	 * @return {Number} The substituted charCode.
 	 */
 	_substituteCharCode(charCode) {
@@ -70,7 +70,7 @@ class Caesar extends SubstitutionCipher {
  *
  * @method Cipher
  * @static
- * @param password {Number|String} The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
+ * @param {Number|String} password The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
  * @return {Caesar} The Cipher.
  */
 Caesar.Cipher = function (password) {
@@ -82,7 +82,7 @@ Caesar.Cipher = function (password) {
  *
  * @method Decipher
  * @static
- * @param password {Number|String} The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
+ * @param {Number|String} password The password to use, see {{#crossLink "Password"}}{{/crossLink}} for valid formats.
  * @return {Caesar} The Decipher.
  */
 Caesar.Decipher = function (password) {
