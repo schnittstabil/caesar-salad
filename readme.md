@@ -1,4 +1,4 @@
-# caesar-salad [![Dependency Status](https://gemnasium.com/schnittstabil/caesar-salad.svg)](https://gemnasium.com/schnittstabil/caesar-salad) [![Build Status](https://travis-ci.org/schnittstabil/caesar-salad.svg?branch=master)](https://travis-ci.org/schnittstabil/caesar-salad) [![Coverage Status](https://coveralls.io/repos/github/schnittstabil/caesar-salad/badge.svg?branch=master)](https://coveralls.io/github/schnittstabil/caesar-salad?branch=master) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+# caesar-salad [![Build Status](https://travis-ci.org/schnittstabil/caesar-salad.svg?branch=master)](https://travis-ci.org/schnittstabil/caesar-salad) [![Coverage Status](https://coveralls.io/repos/github/schnittstabil/caesar-salad/badge.svg?branch=master)](https://coveralls.io/github/schnittstabil/caesar-salad?branch=master) [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 > Caesar, Vigenere and ROT Ciphers
 
@@ -6,8 +6,6 @@
 
 ```bash
 $ npm install --save caesar-salad
-# or
-$ jspm install caesar-salad=github:schnittstabil/caesar-salad
 ```
 
 ## Usage

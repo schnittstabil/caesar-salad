@@ -32,11 +32,6 @@
     "coveralls": "^2.11.11",
     "del-cli": "^0.2.0",
     "execa": "^0.4.0",
-    "grunt": "^1.0.1",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-saucelabs": "^9.0.0",
-    "jspm": "^0.16.39",
     "nyc": "^7.1.0-candidate3",
     "xo": "^0.16.0",
     "yuidocjs": "^0.10.2"
@@ -46,8 +41,6 @@
       "**/.nyc_output/**",
       "**/coverage/**",
       "**/gh-pages/**",
-      "**/jspm_packages/**",
-      "examples/**/config.js",
       "resources/yuidoc/**",
       "config.js",
       "build.js"
@@ -63,18 +56,6 @@
           "exposeMochaResults",
           "xpect"
         ]
-      },
-      {
-        "files": "examples/**/*.js",
-        "envs": [
-          "browser"
-        ],
-        "globals": [
-          "$"
-        ],
-        "rules": {
-          "import/no-extraneous-dependencies": "off"
-        }
       }
     ]
   },
@@ -94,14 +75,6 @@
     "test": "xo && ava",
     "test-cover": "xo && nyc ava",
     "test-cover-html": "npm run test-cover && nyc report --reporter=html",
-    "test-browser-local": "grunt default",
-    "test-browser-saucelabs": "grunt saucelabs",
     "docs": "del 'gh-pages/**' '!gh-pages' '!gh-pages/index.html' '!gh-pages/.git' '!gh-pages/.git/**' && yuidoc"
-  },
-  "jspm": {
-    "dependencies": {
-      "char-buffer": "github:schnittstabil/char-buffer@^1.0.1"
-    },
-    "devDependencies": {}
   }
 }

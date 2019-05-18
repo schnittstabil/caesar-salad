@@ -11,18 +11,6 @@ npm test
 npm run test-cover-html
 ```
 
-### Browser
-
-```bash
-node_modules/.bin/jspm update
-node_modules/.bin/jspm bundle-sfx test/_mocha.js build.js
-# Local
-npm run test-browser-local
-# Saucelabs
-SAUCE_USERNAME=schnittstabil SAUCE_ACCESS_KEY=… node_modules/.bin/grunt saucelabs
-```
-
-
 ## Publish
 
 ### 1. gh-pages
@@ -71,7 +59,3 @@ rm caesar-salad*.tgz
 # if ok
 npm publish
 ```
-
-## Links
-
-* [JavaScript Unit Testing on Sauce](https://wiki.saucelabs.com/display/DOCS/JavaScript+Unit+Testing)

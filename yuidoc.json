@@ -11,7 +11,7 @@
     "paths": [
       "."
     ],
-    "exclude": "coverage,examples,gh-pages,jspm_packages,node_modules,resources,test",
+    "exclude": "coverage,gh-pages,node_modules,resources,test",
     "markdown": {
       "html": true
     }
