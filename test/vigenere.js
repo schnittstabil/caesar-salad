@@ -71,13 +71,15 @@ import cryptTest from './helpers/crypt-test';
 		expected: 'vuhv@fzdqqnh.gpo'
 	}
 ].forEach(task => {
-	test(task.title + ' (encrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (encrypt)', cryptTest, {
+		...task,
 		cipher: Vigenere.Cipher
-	}));
+	});
 
-	test(task.title + ' (decrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (decrypt)', cryptTest, {
+		...task,
 		cipher: Vigenere.Decipher,
 		input: task.expected,
 		expected: task.input
-	}));
+	});
 });

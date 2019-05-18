@@ -10,13 +10,15 @@ import cryptTest from './helpers/crypt-test';
 		expected: '!"#$%&\'()*+,-./5678901234:;<=>?@NOPQRSTUVWXYZABCDEFGHIJKLM[\\]^_`nopqrstuvwxyzabcdefghijklm{|}~'
 	}
 ].forEach(task => {
-	test(task.title + ' (encrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (encrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.ROT18.Cipher
-	}));
+	});
 
-	test(task.title + ' (decrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (decrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.ROT18.Decipher,
 		input: task.expected,
 		expected: task.input
-	}));
+	});
 });

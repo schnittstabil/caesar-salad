@@ -40,13 +40,15 @@ import cryptTest from './helpers/crypt-test';
 		))
 	}
 ].forEach(task => {
-	test(task.title + ' (encrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (encrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.Caesar.Cipher
-	}));
+	});
 
-	test(task.title + ' (decrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (decrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.Caesar.Decipher,
 		input: task.expected,
 		expected: task.input
-	}));
+	});
 });

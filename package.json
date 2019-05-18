@@ -1,6 +1,6 @@
 {
   "name": "caesar-salad",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Caesar, Vigenere and ROT Ciphers.",
   "license": "MIT",
   "keywords": [

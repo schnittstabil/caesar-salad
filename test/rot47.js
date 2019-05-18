@@ -15,13 +15,15 @@ import cryptTest from './helpers/crypt-test';
 		expected: '%96 "F:4< qC@H? u@I yF>AD ~G6C %96 {2KJ s@8'
 	}
 ].forEach(task => {
-	test(task.title + ' (encrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (encrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.ROT47.Cipher
-	}));
+	});
 
-	test(task.title + ' (decrypt)', cryptTest, Object.assign({}, task, {
+	test(task.title + ' (decrypt)', cryptTest, {
+		...task,
 		cipher: caesarSalad.ROT47.Decipher,
 		input: task.expected,
 		expected: task.input
-	}));
+	});
 });
