@@ -1,7 +1,7 @@
 import test from 'ava';
-import ROT5 from '../rot5';
 
-import cryptTest from './helpers/crypt-test';
+import ROT5 from '../rot5';
+import cryptTest from './helpers/_crypt-test';
 
 [
 	{

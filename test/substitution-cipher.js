@@ -1,4 +1,5 @@
 import test from 'ava';
+
 import SubstitutionCipher from '../substitution-cipher';
 
 test('_substituteCharCode should throw an error', t => {

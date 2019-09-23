@@ -1,7 +1,7 @@
 import test from 'ava';
-import caesarSalad from '..';
 
-import cryptTest from './helpers/crypt-test';
+import cryptTest from './helpers/_crypt-test';
+import caesarSalad from '..';
 
 [
 	{

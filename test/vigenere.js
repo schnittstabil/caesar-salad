@@ -1,7 +1,7 @@
 import test from 'ava';
-import Vigenere from '../vigenere';
 
-import cryptTest from './helpers/crypt-test';
+import Vigenere from '../vigenere';
+import cryptTest from './helpers/_crypt-test';
 
 [
 	{
